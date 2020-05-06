@@ -110,7 +110,7 @@ angular.module("sudokuApp")
                 $http({
 
                     method: 'POST',
-                    url: 'http://localhost:3000/Sudoku/move',
+                    url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/move',
                     data: {
                         "GameID": "" + GameID,
                         "stepValueAndCords": "" + row + "" + "" + col + "" + "" + value + "",
@@ -328,7 +328,7 @@ angular.module("sudokuApp")
             $http ({
 
                 method: 'GET',
-                url:'http://localhost:3000/Sudoku/getBoard/'+PuzzleIDRandom})
+                url:'https://serverdecisionsmaking.herokuapp.com/Sudoku/getBoard/'+PuzzleIDRandom})
                 .then(function(response) {
                     PuzzleID = response.data[0].PuzzleID;
                     const boardString = response.data[0].board;
@@ -438,7 +438,7 @@ angular.module("sudokuApp")
 
 
                         method: 'POST',
-                        url:'http://localhost:3000/Sudoku/createNewGame',
+                        url:'https://serverdecisionsmaking.herokuapp.com/Sudoku/createNewGame',
                         data: {
                             "userID":""+sessionStorage.getItem("userID"),
                             "puzzleID":""+PuzzleIDRandom,
@@ -448,7 +448,7 @@ angular.module("sudokuApp")
 
                             $http ({
                                 method: 'GET',
-                                url:'http://localhost:3000/Sudoku/getGameID'
+                                url:'https://serverdecisionsmaking.herokuapp.com/Sudoku/getGameID'
                             })
                                 .then(function(response) {
                                     // GameID = response.data.length;
@@ -599,7 +599,7 @@ angular.module("sudokuApp")
                     $http({
 
                         method: 'POST',
-                        url: 'http://localhost:3000/Sudoku/move',
+                        url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/move',
                         data: {
                             "GameID": "" + $rootScope.GameID,
                             "stepValueAndCords": "" + rowIndex + "" + "" + colIndex + "" + "" + value + "",
@@ -641,7 +641,7 @@ angular.module("sudokuApp")
 
 
                 method: 'POST',
-                url: 'http://localhost:3000/Sudoku/submitFamiliarityAndDifficultyEstimateBefore',
+                url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/submitFamiliarityAndDifficultyEstimateBefore',
                 data: {
                     "gameID": "" + $rootScope.GameID,
                     "userID": ""+ sessionStorage.getItem("userID"),
@@ -675,7 +675,7 @@ angular.module("sudokuApp")
             $http({
 
                 method: 'POST',
-                url: 'http://localhost:3000/Sudoku/finishGame',
+                url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/finishGame',
                 data: {
                     "gameID": "" + $rootScope.GameID,
                     "solutionBoard":JSON.parse(sessionStorage.getItem("solutionBoard")),

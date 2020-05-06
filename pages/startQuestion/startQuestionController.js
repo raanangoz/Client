@@ -96,7 +96,7 @@ angular.module("sudokuApp")
 
                             $http({
                                 method: 'POST',
-                                url: 'http://localhost:3000/Sudoku/submitQuestinary', // submitQuestinary - name if the function in the server
+                                url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/submitQuestinary', // submitQuestinary - name if the function in the server
                                 data: {
                                     "workerID": userWorkerID,
                                     "age": userAge,
@@ -111,7 +111,7 @@ angular.module("sudokuApp")
 
                                     $http({
                                         method: "get",
-                                        url: 'http://localhost:3000/Sudoku/getUserID'
+                                        url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/getUserID'
 
 
                                     }).then(function (response) {
@@ -144,7 +144,7 @@ angular.module("sudokuApp")
                                                 //update the counterPresentation
                                                 $http ({
                                                     method: 'GET',
-                                                    url:'http://localhost:3000/Knapsack/getPresentationCounter/'+KSpresentation
+                                                    url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getPresentationCounter/'+KSpresentation
                                                 })
 
                                                     .then(function(response) {
@@ -223,7 +223,7 @@ angular.module("sudokuApp")
                                                 $http({
 
                                                     method: 'POST',
-                                                    url: 'http://localhost:3000/Knapsack/updateCounterPresentation/',
+                                                    url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/updateCounterPresentation/',
                                                     data: {
                                                         "presentation": "" + $rootScope.KSpresentation,
                                                         "counterPresentation" : ""+counterPresentation

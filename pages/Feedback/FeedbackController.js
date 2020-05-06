@@ -23,7 +23,7 @@ angular.module("sudokuApp")
                 $http({
 
                     method: 'POST',
-                    url: 'http://localhost:3000/Sudoku/updateRecommendations',
+                    url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/updateRecommendations',
                     data: {
                         "userID": ""+ sessionStorage.getItem("userID"),
                         "exam":""+exam,

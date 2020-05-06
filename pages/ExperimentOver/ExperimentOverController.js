@@ -34,7 +34,7 @@ angular.module("sudokuApp")
                     $http({
 
                             method: 'POST',
-                            url: 'http://localhost:3000/Sudoku/updateCompletionCode ',
+                            url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/updateCompletionCode ',
                             data: {
                                     "userID": ""+ sessionStorage.getItem("userID"),
                                     "compCode": ""+ $scope.code

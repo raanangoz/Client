@@ -63,7 +63,7 @@ angular.module("sudokuApp")
 
                 $http({
                     method: "get",
-                    url: 'http://localhost:3000/Sudoku/getKnapsackQuestions/'
+                    url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/getKnapsackQuestions/'
 
 
 
@@ -108,7 +108,7 @@ angular.module("sudokuApp")
 
                 $http({
                     method: "get",
-                    url: 'http://localhost:3000/Sudoku/getSudokuNumQuestion/'
+                    url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/getSudokuNumQuestion/'
 
 
 

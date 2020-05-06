@@ -121,7 +121,7 @@ angular.module("sudokuApp")
             $http({
 
                 method: 'POST',
-                url: 'http://localhost:3000/Knapsack/insertMove',
+                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/insertMove',
                 data: {
                     "GameID": "" +sessionStorage.getItem("GameID"),
                     "itemWeight": + itemWeight,
@@ -215,7 +215,7 @@ angular.module("sudokuApp")
             $http ({
 
                 method: 'GET',
-                url:'http://localhost:3000/Knapsack/getBoard/'+$rootScope.instance})
+                url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getBoard/'+$rootScope.instance})
                 .then(function(response) {
 
                     // PuzzleID = response.data[0].PuzzleID;
@@ -254,7 +254,7 @@ angular.module("sudokuApp")
 
 
                         method: 'POST',
-                        url:'http://localhost:3000/Knapsack/createNewGame',
+                        url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/createNewGame',
                         data: {
                             "userID":""+$rootScope.userID,
                             "puzzleID":""+$rootScope.instance,
@@ -265,7 +265,7 @@ angular.module("sudokuApp")
 
                             $http ({
                                 method: 'GET',
-                                url:'http://localhost:3000/Knapsack/getGameID'
+                                url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getGameID'
                             })
                                 .then(function(response) {
                                     // GameID = response.data.length;
@@ -308,7 +308,7 @@ angular.module("sudokuApp")
             $http({
 
                 method: 'POST',
-                url: 'http://localhost:3000/Knapsack/submitFamiliarityAndDifficultyEstimateBefore',
+                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/submitFamiliarityAndDifficultyEstimateBefore',
                 data: {
                     "gameID": "" + sessionStorage.getItem("GameID"),
                     "userID": ""+ $rootScope.userID,
@@ -378,7 +378,7 @@ angular.module("sudokuApp")
             $http({
 
                 method: 'POST',
-                url: 'http://localhost:3000/Knapsack/finishGame',
+                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/finishGame',
                 data: {
                     "totalTime": "" + diff,
                     "Solution": "" + userAns,
@@ -429,7 +429,7 @@ angular.module("sudokuApp")
                 $http({
 
                     method: 'POST',
-                    url: 'http://localhost:3000/Knapsack/insertMove',
+                    url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/insertMove',
                     data: {
                         "GameID": "" + sessionStorage.getItem("GameID"),
                         "itemWeight": "" + itemWeight,

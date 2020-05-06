@@ -119,7 +119,7 @@ angular.module("sudokuApp")
                     $http({
 
                         method: 'POST',
-                        url: 'http://localhost:3000/Sudoku/submitFinishQuestion',
+                        url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/submitFinishQuestion',
                         data: {
                             "userID": "" + sessionStorage.getItem("userID"),
                             "gameID": "" + $rootScope.GameID,
@@ -154,7 +154,7 @@ angular.module("sudokuApp")
                         $http({
 
                             method: 'POST',
-                            url: 'http://localhost:3000/Knapsack/submitFinishQuestion',
+                            url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/submitFinishQuestion',
                             data: {
                                 "userID": "" + sessionStorage.getItem("userID"),
                                 "gameID": "" + $rootScope.GameID,
@@ -232,7 +232,7 @@ angular.module("sudokuApp")
                             //update the counterPresentation
                             $http ({
                                 method: 'GET',
-                                url:'http://localhost:3000/Knapsack/getPresentationCounter/'+KSpresentation
+                                url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getPresentationCounter/'+KSpresentation
                             })
 
                                 .then(function(response) {
@@ -311,7 +311,7 @@ angular.module("sudokuApp")
                             $http({
 
                                 method: 'POST',
-                                url: 'http://localhost:3000/Knapsack/updateCounterPresentation/',
+                                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/updateCounterPresentation/',
                                 data: {
                                     "presentation": "" + $rootScope.KSpresentation,
                                     "counterPresentation" : ""+counterPresentation

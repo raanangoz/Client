@@ -1,9 +1,9 @@
-let app = angular.module('sudokuApp', ["ngRoute"]);
+
 
 var express = require('express');
 var path = require('path');
 var app_ = express();
-
+let app = angular.module('sudokuApp', ["ngRoute"]);
 app_.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });

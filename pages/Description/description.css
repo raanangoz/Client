@@ -1,0 +1,80 @@
+
+.des{
+
+    font-size: 25px;
+    /*font-weight: bold;*/
+    /*border-color: blue;*/
+    /*background-color: white;*/
+    /*border: 2px;*/
+    background-color: lightgrey;
+    width: 800px;
+    height: 400;
+    border: 5px solid blue;
+    padding: 50px;
+    margin:0 auto;
+}
+
+#startGameButton{
+
+    background-color: #f4f1d2;
+    /*padding: 5px 15px;*/
+    height: 70px;
+    width: 150px;
+    font-size: 200%;
+    font-weight: bold;
+    /*align: center;*/
+    position: absolute;
+    right: calc(40% - 75px);
+    bottom: 7%;
+
+}
+
+#tutorialButton{
+
+    background-color: #f4f1d2;
+    /*padding: 5px 15px;*/
+    height: 70px;
+    width: 150px;
+    font-size: 200%;
+    font-weight: bold;
+    /*align: center;*/
+    position: absolute;
+    right: calc(60% - 75px);
+    bottom: 7%;
+
+}
+
+#familiar{
+    padding-left: 20px;
+}
+.familiar{
+    font-size: 20px;
+}
+
+#familiarOptions{
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 100%;
+    padding-left: 80px;
+}
+
+.familiar-option{
+    justify-self: start;
+}
+
+#continueButton{
+
+    background-color: #f4f1d2;
+    /*padding: 5px 15px;*/
+    height: 70px;
+    width: 150px;
+    font-size: 200%;
+    font-weight: bold;
+    /*align: center;*/
+    position: absolute;
+    right: calc(50% - 100px);
+    bottom: 7%;
+
+}
+

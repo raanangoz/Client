@@ -1,0 +1,63 @@
+.home-page-container{
+
+    display: flex;
+    align-items: center; /* height*/
+    justify-content: center; /* width*/
+
+}
+
+.home-page-internal{
+
+    width: 800px;
+    height: 700px;
+    background-color: white;
+    border: 5px solid black;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*display: flex;*/
+    /*position: relative;*/
+}
+
+.explain {
+
+    font-size: 20px;
+    /*position: absolute;*/
+    top: 80px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-top: 40px;
+
+}
+
+
+.buttonStart{
+
+    width:100px;
+    height: 40px;
+    /*position: absolute;*/
+    /*bottom: 20px;*/
+    margin-right: 50px;
+    display: flex;
+    align-items: center; /* height*/
+    justify-content: center; /* width*/
+    padding-bottom: 80px;
+    /*padding-bottom: 80px;*/
+
+}
+
+.buttonS{
+
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    /*margin-top: 200px;*/
+    margin-left: 680px;
+    margin-bottom: 20px;
+}
+
+
+
+

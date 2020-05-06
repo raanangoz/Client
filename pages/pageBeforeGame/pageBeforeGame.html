@@ -1,0 +1,79 @@
+<BODY onload="noBack();"
+      onpageshow="if (event.persisted) noBack();" onunload=""></BODY>
+
+<link rel="stylesheet" type="text/css" href="pages/pageBeforeGame/pageBeforeGame.css" />
+
+<div class="home-page-container" ng-controller="pageBeforeGameController" >
+    <div class="home-page-internal">
+
+        <p class="explain" ng-if="numbers">Your task is to solve a number-placement Sudoku puzzle.<br/>
+            The Sudoku puzzle grid you will be presented with is partly filled, <br/>
+            and has only one correct solution.<br/><br>
+            Your objective is to correctly fill every empty cell on the grid with a number<br/>
+            from 1 to 9, according to the instructions and rules.<br/>
+            The task will begin with a first impression phase, in which you will have a few <br/>
+            seconds of a first glance on the puzzle, followed by a question appearing on the screen. <br/><br>
+            After answering the first impression question, <br/>
+            you will be able to start the puzzle-solving task, by clicking on “Start Game”.<br/>
+            You will have 15 minutes to solve the puzzle. <br/>
+            If you have finished filling the entire grid before the time limits expire,  <Br/>
+            you can press the 'Finish Game’, and continue to the next page.<br/>
+            Please refrain from refreshing/ closing the page or going back in the browser<br/>
+            because this may harm your results of the experiment.<Br/>
+            <br>
+            Good Luck!<br/>
+
+        </p>
+
+        <p class="explain" ng-if="colors">Your task is to solve a color-placement Sudoku puzzle.<br/>
+            The Sudoku puzzle grid you will be presented with is partly filled, <br/>
+            and has only one correct solution.<br/><br>
+            Your objective is to correctly fill every empty cell on the grid with a color<br/>
+            according to the given declaration and the instructions and rules.<br/>
+            The task will begin with a first impression phase, in which you will have a few <br/>
+            seconds of a first glance on the puzzle, followed by a question appearing on the screen. <br/><br>
+            After answering the first impression question, <br/>
+            you will be able to start the puzzle-solving task, by clicking on “Start Game”.<br/>
+            You will have 15 minutes to solve the puzzle. <br/>
+            If you have finished filling the entire grid before the time limits expire,  <Br/>
+            you can press the 'Finish Game’, and continue to the next page.<br/>
+            Please refrain from refreshing/ closing the page or going back in the browser<br/>
+            because this may harm the results of your experiment.<Br/>
+            <br>
+            Good Luck!<br/>
+
+        </p>
+
+        <p class="explain" ng-if="ks"> Your task is to solve a Knapsack problem.<br/>
+        The Problem represented by group of Gold bullion with value
+            and weight and a bag with limited weight capacity. <br/>
+        Your objective is to correctly choose the item of the gold bullion
+            so you would maximize the value without overweight the capacity.<br/><br/>
+        The task will begin with a first impression phase, in which you will have a few <br/>
+        seconds of a first glance on the items of the gold bullion,
+            followed by a question appearing on the screen. <br/><br>
+        Each problem has only one correct solution.<br/>
+        After answering the first impression question, <br/>
+        you will be able to start solving the task, by clicking on “Start Game”.<br/>
+        You will have 4 minutes to solve the problem. <br/>
+        If you have finished choosing the items before the time limits expire,  <Br/>
+        you can press the 'Finish Game’, and continue to the next page.<br/>
+            Please refrain from refreshing/ closing the page or going back in the browser<br/>
+            because this may harm the results of your experiment.<Br/>
+        <br>
+        Good Luck!<br/>
+        <br>
+        </p>
+
+        <div class="buttonStart">
+            <button class="buttonS" ng-click="start()">Start</button>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>

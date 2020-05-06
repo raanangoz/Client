@@ -1,0 +1,77 @@
+<BODY onload="noBack();"
+      onpageshow="if (event.persisted) noBack();" onunload=""></BODY>
+
+<link rel="stylesheet" type="text/css" href="pages/startQuestion/startQuestion.css" />
+
+<div class="home-page-container" ng-controller="startQuestionController as quesCtrl">
+
+    <div class= "home-page-internal">
+
+        <form name="questionsForm" ng-submit="submit()" novalidate>
+            <h1 class="titleQuestion"><b>Demographic information</b></h1>
+            <hr>
+
+            <div class="details">
+                <div class="form-group">
+                    <h2 class= "subTitles"><B>Worker ID</B></h2>
+                    Enter your first name if you don't have one
+                    <br>
+                    <input id="workerID"  pattern="[A-Za-z0-9]+" required ng-maxlength="30">
+
+
+                </div>
+
+                <div class="form-group">
+                    <h2 class= "subTitles"><B>Age</B></h2>
+                    <input type="age" id="age"  required ng-minlength="2">
+                </div>
+
+
+                <div class="form-group">
+                    <h2 class= "subTitles"><B> Gender</B></h2>
+
+                    <div>
+
+                        <input type="radio" name="gender" ng-model="gender" value=" male" > Male
+                        <input type="radio" name="gender" ng-model="gender" value=" female" >Female
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <h2 class= "subTitles"><B> What is your strong hand?</B></h2>
+
+                    <div>
+                        <input type="radio" name="hand" ng-model="hand" value=" right"   > Right
+                        <input type="radio"  name="hand" ng-model="hand" value=" left"  > Left
+                        <input type="radio"  name="hand" ng-model="hand" value=" both"  > Both hands are equally strong
+                    </div>
+                </div>
+
+
+                <div class="form-group" id="educationDiv">
+                    <h2 class= "subTitles"><B> Education</B></h2>
+
+                    <div>
+                        <input type="radio" name="education" ng-model="education" value="less"  > Less than High School<br>
+                        <input type="radio" name="education" ng-model="education" value="high"   > High School/GED<br>
+                        <input type="radio" name="education" ng-model="education" value="college"   > College<br>
+                        <input type="radio" name="education" ng-model="education" value="degree"  > Graduate Degree<br>
+                        <input type="radio"  name="education" ng-model="education" value="prefer"  > Prefer not to say
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="buttonSubmit">
+            <input  class= "submitButton" class="btn btn-primary" ng-disabled="loginForm.$invalid"  type="submit" id="submit" value="Submit" ng-click='go()'>
+        </div>
+
+<!--        <div class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+<!--             aria-hidden="true">-->
+<!--        </div>-->
+    </div>
+</div>
+
+
+<!--class="btn btn-primary"-->

@@ -1,0 +1,56 @@
+
+<link rel="stylesheet" type="text/css" href="pages/Feedback/Feedback.css" />
+
+<div class="home-page-container" ng-controller="FeedbackController as FeedbackCtrl">
+
+    <div class= "home-page-internal">
+
+        <h1 class="titleQuestion"><b>Feedback</b> (optional)</h1>
+
+        <hr>
+
+        <div class="textFidback">
+            Before the end of this experiment, we would like to receive feedback. <br>
+            Please write shortly if you have any recommendations, or encountered in a problem on the following topics.<br/>
+            It is very important to us for the continuation of our research.<br/>
+            Thank you!
+        </div>
+
+        <div class="details">
+            <div class="form-group">
+                <h2 class= "subTitles"><B>Exam</B></h2>
+                <textarea id="exam" class = "inputBox" ng-model = "exam" maxlength="500"  >
+                </textarea>
+
+            </div>
+            <div class="form-group">
+                <h2 class= "subTitles"><B>Tutorial</B></h2>
+                <textarea id="tutorial"  class = "inputBox" ng-model = "tutorial"  maxlength="500">
+                </textarea>
+            </div>
+
+
+            <div class="form-group">
+                <h2 class= "subTitles"><B> Games</B></h2>
+                <textarea id="games"ng-model = "games" class = "inputBox"  maxlength="500">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <h2 class= "subTitles"><B> Other</B></h2>
+                <textarea id="other" ng-model = "other" class = "inputBox"  maxlength="500">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="buttonSubmit">
+            <input class="submitB"  type="submit" id="submit2"value="Submit" ng-click='go()'>
+        </div>
+
+        <!--        <div class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
+        <!--             aria-hidden="true">-->
+        <!--        </div>-->
+    </div>
+</div>
+
+
+<!--class="btn btn-primary"-->

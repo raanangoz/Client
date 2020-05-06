@@ -1,0 +1,347 @@
+/*body{*/
+
+/*    background-color: bisque;*/
+/*}*/
+
+.page-container{
+
+    display: flex;
+    align-items: center; /* height*/
+    justify-content: center; /* width*/
+    /*background-color: bisque;*/
+    /*width:100%;*/
+    /*height:100%;*/
+
+}
+
+.titleTutorial{
+    font-size: 120px;
+    width: 100%;
+    height: 100px;
+    /*border:1px solid red;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*color: lightslategrey;*/
+    color: cadetblue;
+    font-weight: bold;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.home-page-internal{
+    width: 800px;
+    height: 650px;
+    background-color: white;
+    border: 5px solid cadetblue;
+    /*margin-bottom: 5px;*/
+    border-radius: 6px;
+    /*align-items: center;*/
+    /*position: relative;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+
+
+.slide1 {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.slide2-8 {
+
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.slide8 {
+
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+
+
+.slide3-7{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 80px;
+    /*color: lightslategrey;*/
+    color: cadetblue;
+    font-weight: bold;
+
+}
+
+.slide4-5-6{
+
+    height: 100%;
+    width: 100%;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.slide9{
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /*align-items: center;*/
+    align-items: flex-start;
+    /*justify-content: center;*/
+    font-weight: bold;
+    font-size: 18px;
+    flex-direction: column;
+}
+
+.icon{
+    /*position: absolute;*/
+    /*justify-self: center;*/
+    /*align-self: center;*/
+    /*width: 790px;*/
+    height: 100px;
+    width: 100%
+    /*padding-left: 50px;*/
+
+}
+
+.mySlides {
+
+    width: 100%;
+    height: 100%;
+}
+.slider-container{
+    width: 100%;
+    height: 540px;
+    display: grid;
+    grid-template-columns: 90px 1fr 90px;
+}
+.main-slide{
+    width: 100%;
+    height: 100%;
+}
+
+/*.des{*/
+/*    font-size: 18px;*/
+/*}*/
+
+#familiar{
+    padding-left: 20px;
+    /*width:100px;*/
+
+
+}
+.familiar{
+    font-size: 20px;
+    width: 90%;
+    height: 50%;
+    justify-self: center;
+    align-self: center;
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+#familiarOptions{
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 100%;
+    padding-left: 80px;
+    padding-top: 30px;
+}
+
+.imageKey{
+
+    width: 100%;
+    height: 55%;
+}
+
+.familiar-option{
+    justify-self: start;
+}
+
+.w3-buttonPrev{
+    background-color: white;
+    color: black;
+    border: 2px solid cadetblue;
+    width:  70px;
+    height: 50px;
+    border-radius: 4px;
+}
+
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w3-buttonPrev:hover {background-color: #e7e7e7;}
+
+.w3-buttonNext{
+
+    background-color: white;
+    color: black;
+    border: 2px solid cadetblue;
+    width:  70px;
+    height: 50px;
+    border-radius: 4px;
+}
+
+.w3-buttonNext:hover {background-color: #e7e7e7;}
+
+#firstP{
+
+    font-size: 20px;
+}
+
+#lastP{
+    font-size: 20px;
+
+}
+
+.piskaEnd{
+
+    padding-left: 30px;
+    padding-top: 35px;
+}
+
+.examButton{
+    padding-left: 30px;
+    padding-top: 35px;
+
+}
+
+/*#titleSlide1{*/
+
+/*    font-size: 80px;*/
+/*    position: absolute;*/
+/*    text-align: center;*/
+/*    align-self: center;*/
+/*    !*bottom: 5px;*!*/
+/*    !*top: 120px;*!*/
+/*    color: lightslategrey;*/
+
+/*}*/
+
+.titleSlide2{
+
+    /*font-size: 70px;*/
+    /*position: absolute;*/
+    /*text-align: center;*/
+    /*align-self: center;*/
+
+
+}
+
+.titleSlide3{
+
+
+}
+
+#piskaKeys1{
+
+    /*font-size: 22px;*/
+    /*align-self: center;*/
+    /*justify-self: center;*/
+
+}
+
+#piskaKeys2{
+
+    /*font-size: 22px;*/
+    /*align-self: center;*/
+    /*justify-self: center;*/
+
+}
+
+/*.tutorialPictures{*/
+
+/*    width: 85%;*/
+/*    height: 50%;*/
+/*}*/
+
+
+.image{
+
+    width: 90%;
+    height: 50%;
+    justify-self: center;
+    align-self: center;
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+.imageKeyKS{
+
+    width: 20%;
+    height: 10%;
+
+}
+
+.illustrationKS{
+
+    display: flex;
+    flex-direction: row;
+    padding-top: 70px;
+}
+
+.explain{
+
+    margin-left: 30px;
+
+}
+
+/*.tutorialSentence{*/
+
+/*    font-size: 25px;*/
+/*}*/
+
+.note{
+    font-size: 15px;
+
+}
+
+.clear-margin{
+    margin: 0;
+}
+
+.keys{
+
+    PADDING-TOP: 30PX;
+
+
+}
+
+.illustration{
+
+
+}
+
+
+

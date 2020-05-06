@@ -1,0 +1,62 @@
+
+<BODY onload="noBack();"
+      onpageshow="if (event.persisted) noBack();" onunload=""></BODY>
+
+    <link rel="stylesheet" type="text/css" href="pages/home/home.css" />
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+    <div class="home-page-container" ng-controller="homeController" >
+        <div class="home-page-internal">
+
+            <h1 class="titleHome" ><b>Welcome to Our Experiment</b></h1>
+            <hr>
+
+            <div class="experimentDes">
+
+                <p>Please consider this information carefully before deciding whether to accept this task.</p>
+                <p><b>PURPOSE OF RESEARCH:</b> To examine problem-solving performance.</p>
+                <p><b>WHAT YOU WILL DO:</b> You will be asked to solve Sudoku and Knapsack puzzles.</p>
+                <p><b>TIME REQUIRED:</b> Participation will take approximately 40-60 minutes.</p>
+                <p><b>RISKS:</b> There are no anticipated risks associated with participating in this study. </p>
+                <p>The effects of participating should be comparable to those you would experience from viewing a</p>
+                <p>computer monitor for 60 minutes and using a mouse.</p>
+                <p><b>COMPENSATION:</b> Upon completion of this task, you will receive a code to enter on the </p>
+                <p>Amazon Mechanical Turk task page, and you will receive the amount that was indicated on the task page.</p>
+                <p><b>CONFIDENTIALITY:</b> Your participation in this study will remain confidential. </p>
+                <p>Your responses will be assigned a code number.</p>
+                <p>You will NOT be asked to provide your name. You will be asked to provide your age and gender.</p>
+                <p>Throughout the experiment, we may collect data such as browser type, operating system version,</p>
+                <p>mouse movements, and error rates.</p>
+                <p>The records of this study will be kept private.</p>
+                <p>In any sort of report, we make public, we will not include any information </p>
+                <p>that will make it possible to identify you without your explicit consent.</p>
+                <p><b>PARTICIPATION AND WITHDRAWAL:</b> Your participation in this study is voluntary, </p>
+                <p>and you may withdraw at any time. You will receive compensation only if you complete the task. </p>
+                <p>You may withdraw at any time by closing the web page of the task.</p>
+                <p><b>CONTACT:</b> This study is conducted by researchers at Ben-Gurion University. </p>
+                <p>If you have any questions or concerns about this study, please contact hilla.shinitzky@gmail.com</p>
+                <br><br>
+                <b>Consent:</b> I have read the above information and the nature and purpose of this research have been sufficiently explained.
+                I consent to take part in the study. I understand that I am free to withdraw at any time.
+
+                <input type="checkbox" ng-model="termsCheckBox">
+
+
+            </div>
+
+            <br>
+
+            <div class="footer">
+                <button  class="continueButton" ng-disabled="!termsCheckBox" ng-click=" continue()" >Continue</button>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+

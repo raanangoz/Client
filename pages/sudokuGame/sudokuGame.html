@@ -1,0 +1,142 @@
+<!--<div ng-class=" {'red' : ==1}"></div>-->
+
+<BODY onload="noBack();"
+      onpageshow="if (event.persisted) noBack();" onunload=""></BODY>
+
+<link rel="stylesheet" type="text/css" href="pages/sudokuGame/sudokuGame.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div ng-controller="sudokuGameController" ng-init= "init()" class="board">
+    <p id="status"></p>
+<!--    <img id="mySpinner" src="http://www2.emp.uva.es/wp-content/plugins/responsive-flipbook/assets/images/loader.gif" ng-show="loading" />-->
+
+    <div class="row" ng-repeat="row in sudokuBoard track by $index" ng-init="rowIndex = $index" >
+
+        <div  ng-repeat="field in row track by $index" ng-init="colIndex = $index" class="one-box"
+
+             ng-click="onBoxClick(field, colIndex, rowIndex)"
+             ng-class="{'red' : field===1, 'lightskyblue': field===2 ,'lightGreen': field===3,
+                    'yellow': field===4 , 'green': field===5 , 'orange': field===6 ,'blue': field===7 , 'brown': field===8 , 'pink': field===9
+                    ,'right-border': colIndex === 2 || colIndex === 5, 'bottom-border': rowIndex === 2 || rowIndex === 5,
+                    'bold-border': initialBoard[rowIndex][colIndex] !== '0' && typeCase}">
+
+            <div class="icon" ng-if="typeCase && initialBoard[rowIndex][colIndex] === '0' && field !== ''">
+                <svg class="bi bi-question" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg>
+            </div>
+
+
+            <input ng-if="field === '' || !typeCase" maxlength="1" min="1" max="9"  ng-model="sudokuBoard[rowIndex][colIndex]"
+                   ng-disabled="{{field !== '' }}"
+                   ng-change="move(field, sudokuBoard, rowIndex,colIndex,sudokuBoard[rowIndex][colIndex])"
+                   class="input-field"
+            />
+<!--            <div ng-if="typeCase && field === ''"-->
+<!--                 ng-model="sudokuBoard[$parent.$index][$index]"-->
+<!--                 ng-class="{color-field: true, 'red' : field===1, 'lightskyblue': field===2 ,'black': field===3,-->
+<!--                    'yellow': field===4 , 'green': field===5 , 'orange': field===6 ,'blue': field===7 , 'brown': field===8 , 'pink': field===9}">-->
+<!--            </div>-->
+
+
+        </div>
+
+
+<!--        <div >-->
+<!--            <input  maxlength="1" min="1" max="9" id="temp"  ng-model="sudokuBoard[$parent.$index][$index]" class="field row-{{$parent.$index}} col-{{$index}}"  ng-repeat="field in row track by $index"  ng-class="{'red' : field===1 && typeCase, 'lightskyblue': field===2 && typeCase,'black': field===3 && typeCase,-->
+<!--              'yellow': field===4 && typeCase, 'green': field===5 && typeCase, 'orange': field===6 && typeCase,'blue': field===7 && typeCase, 'brown': field===8 && typeCase, 'pink': field===9 && typeCase, conflict: $parent.$index== conflictRow && $index==conflictCol }" ng-disabled="{{field !== '' }}" ng-change="move(field, sudokuBoard, $parent.$index,$index,sudokuBoard[$parent.$index][$index])"-->
+<!--                    ng-class="{conflict: $parent.$index== conflictRow && $index==conflictCol}" />-->
+<!--        </div>-->
+
+    </div>
+
+<!--    <div class="rowColor" ng-repeat="rowColor in sudokuBoard"  >-->
+
+<!--        <div >-->
+<!--            <input  maxlength="1" min="1" max="9" id="tempColor"  ng-model="sudokuBoardColor[$parent.$index][$index]" class="field row-{{$parent.$index}} col-{{$index}}"  ng-repeat="field in row track by $index"  ng-class="{'red' : field===1 && typeCase, 'lightskyblue': field===2 && typeCase,'black': field===3 && typeCase,-->
+<!--              'yellow': field===4 && typeCase, 'green': field===5 && typeCase, 'orange': field===6 && typeCase,'blue': field===7 && typeCase, 'brown': field===8 && typeCase, 'pink': field===9 && typeCase, conflict: $parent.$index== conflictRow && $index==conflictCol }" ng-disabled="{{field !== '' }}" ng-change="move(field, sudokuBoardColor, $parent.$index,$index,sudokuBoardColor[$parent.$index][$index])"-->
+<!--                    ng-class="{conflict: $parent.$index== conflictRow && $index==conflictCol}" />-->
+
+<!--        </div>-->
+
+
+<!--    </div>-->
+    <br/>
+
+
+    <div class="finishB">
+            <button id= "finish" class="Finish Game" ng-if="gameStarted" ng-click=" finishGameYesOrNo()" >Finish Game</button>
+    </div>
+
+    <br>
+
+
+        <div ng-model="colors" id="declaration" ng-show="colors" >
+
+            <div class="dec"  style="background-color:red;">1  </div>
+            <div class="dec"  style="background-color:lightskyblue;">2  </div>
+            <div class="dec"  style="background-color:darkmagenta;">3  </div>
+            <div class="dec"  style="background-color:yellow;">4  </div>
+            <div class="dec"  style="background-color:green;">5  </div>
+            <div class="dec"  style="background-color:orange;">6  </div>
+            <div class="dec"  style="background-color:blue;">7  </div>
+            <div class="dec"  style="background-color:brown;">8  </div>
+            <div class="dec"  style="background-color:pink;">9  </div>
+
+        </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+<!--                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+                    <h4 class="modal-title" id="myModalLabel"><b>Before you start...</b></h4>
+                </div>
+                <div class="modal-body">
+                    <b>Estimate the problem's difficulty: (between 1 to 10)</b>
+
+                    <div class="slidecontainer">
+                        <br>
+
+                        <input type="range" ng-model="range" ng-click="changeRange()" min="1" max="10" value="50" class="slider" id="myRange">
+
+                    </div>
+                    <br>
+                    <b>Value: </b>{{rangeValue}}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submitRange" ng-disabled="rangeValue==='---'" class="btn btn-primary" ng-click="submitDifficultyAndFamiliarity()">Submit</button>
+                    <button type="button" id="startGame" class="btn btn-default" data-dismiss="modal" ng-click="timer()" ng-disabled="!rangePress">Start Game</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+                    <h4 class="modal-title" id="myModalLabel2"><b>Before you finish...</b></h4>
+                </div>
+                <div class="modal-body">
+                    <b>Are you sure you want to finish game?</b>
+                </div>
+                <br>
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal" ng-click="finishGame()">Yes</button>
+                    <button type="button" data-dismiss="modal"  >No</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

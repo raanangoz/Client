@@ -1,0 +1,88 @@
+.titleQuestion{
+
+    font-size: 50px;
+    /*color: white;*/
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+}
+
+/*#submit{*/
+
+/*    background-color: #f4f1d2;*/
+/*    color: black;*/
+/*    width: 120px;*/
+/*    height: 60px;*/
+/*}*/
+
+.subTitles{
+
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.details{
+
+    height: 400px;
+    overflow: auto;
+    /*font-size: 15px;*/
+    padding-left: 10px;
+}
+
+.home-page-internal{
+    width: 700px;
+    height: 700px;
+    background-color: white;
+    border: 5px solid black;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+
+.home-page-container{
+
+    display: flex;
+    align-items: center; /* height*/
+    justify-content: center; /* width*/
+
+}
+
+.submitButton{
+
+    background-color: #f4f1d2;
+    /*padding: 5px 15px;*/
+    height: 40px;
+    width: 150px;
+    font-size: 150%;
+    font-weight: bold;
+    margin-left: 10px;
+    /*align: center;*/
+    /*position: absolute;*/
+    /*padding-left: 30px;*/
+    /*margin: 30px;*/
+    /*right: calc(50% - 75px);*/
+    /*bottom: 3%;*/
+
+}
+
+.buttonSubmit{
+
+    padding-left: 50px;
+    padding-top: 30px;
+
+
+}
+
+.textFidback{
+
+    padding-left: 10px;
+}
+
+#educationDiv{
+
+    /*padding: 5px;*/
+    /*position: absolute;*/
+}
+.inputBox{
+    height: 100px;
+    width: 300px;
+}

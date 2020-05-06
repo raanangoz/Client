@@ -1,0 +1,190 @@
+<link rel="stylesheet" type="text/css" href="pages/finishQuestion/finishQuestion.css" />
+
+<div class="home-page-container"  ng-controller="finishQuestionController as quesCtrl" ng-init="init()">
+
+    <div class= "home-page-internal">
+
+        <form name="questionsForm" ng-submit="submit()" novalidate>
+            <h1 class="title">Finish Questionnarie</h1>
+            <hr>
+            <div class="form-group" >
+                <div class = "sudoku" ng-if = "sudokuQuestion">
+                    <h1 class="questions">How many boxes do you think you filled correctly out of {{boxes}} boxes?</h1>
+                    <select type="rank" id= "rankCorrectness" name="rank" ng-model="rank2"  >
+
+                        <option ng-repeat="optionNumber in arrayOfOptionNumbers" value="{{optionNumber}}">
+                            {{optionNumber}}
+                        </option>
+
+                    </select>
+                    <br>
+                    <br>
+                    <h1 class="questions"> How difficult was it for you to solve this problem?</h1>
+                    <select type="rank" id= "rankDifficulty" name="rank" ng-model="rank1" >
+                        <option value="1">1: Very easy</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10: Extremely difficult</option>
+
+                    </select>
+
+
+
+                </div>
+                <div class = "knapsackquestions" ng-if = "knapsackquestions">
+                    <h6 class="questions"> How confident are you in your answer? </h6>
+                    <select type="confident1" id= "confident1" name="confident1" ng-model="confident1" >
+                        <option value="1">1: Very easy</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10: Extremely difficult</option>
+
+                    </select>
+                    <h4 class="questions">How difficult was it for you to solve this problem?</h4>
+                    <select type="rank" id= "rankDifficulty1" name="rank3" ng-model="rank3" >
+                        <option value="1">1: Very easy</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10: Extremely difficult</option>
+
+                    </select>
+                    <h4 class="questions">In your opinion, how difficult is it for most people to solve this problem?</h4>
+                    <select type="rank" id= "peopleDifficulty" name="peopleDifficulty" ng-model="peopleDifficulty" >
+                        <option value="1">1: Very easy</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10: Extremely difficult</option>
+
+                    </select>
+                    <hr>
+                    <h4 class="questions">In your opinion, what is the weight of the heaviest item, In the optimal solution? </h4>
+                    <div class="openModal">
+                        <button class="open" ng-click="openModal()" >Press to watch your solution</button>
+                    </div>
+                    <div class="fatI">
+                        <select type="rank" id= "fatItem" name="fatItem" ng-model="fatItem" >
+                            <option value="1">option 1: {{heavy1}}</option>
+                            <option value="2">option 2: {{heavy2}}</option>
+                            <option value="3">option 3: {{heavy3}}</option>
+                            <option value="4">option 4: {{heavy4}}</option>
+
+                        </select>
+                    </div>
+                    <h4 class="questions">How many responders do you estimate, will select each of the given options of the last question?</h4>
+                    <h6> Please sum all options to 100% </h6>
+                    option1
+                    <select type="rank" id= "op1" name="op1" ng-model="op1" ng-change="updateTotal();" >
+
+                        <option ng-repeat="percent1 in correctnessPercents" value="{{percent1}}" selected = "0" >
+                            {{percent1}}%
+                        </option>
+                    </select>
+                    option2
+                    <select type="rank" id= "op2" name="op2" ng-model="op2"  ng-change="updateTotal();">
+
+                        <option ng-repeat="percent2 in correctnessPercents" value="{{percent2}}">
+                            {{percent2}}%
+                        </option>
+                    </select>
+                    option3
+                    <select type="rank" id= "op3" name="op3" ng-model="op3" ng-change="updateTotal();" >
+
+                        <option ng-repeat="percent3 in correctnessPercents" value="{{percent3}}">
+                            {{percent3}}%
+                        </option>
+                    </select>
+                    option4
+                    <select type="rank" id= "op4" name="op4" ng-model="op4" ng-change="updateTotal();" >
+
+                        <option ng-repeat="percent4 in correctnessPercents" value="{{percent4}}">
+                            {{percent4}}%
+                        </option>
+                    </select>
+                    <br>
+<!--                    <input id="listenerSum" ng-model = "listenerSum">-->
+                    total:{{totalV}}
+<!--                    </input>-->
+
+
+
+                </div>
+            </div>
+
+            <div class="buttonSubmit">
+                <!--                <input class="btn btn-primary" type="submit" id="submit" value="Submit" ng-click = "submitEstimates()" >-->
+                <button id="nextTask" class="nextGame" ng-click="submitEstimates()" >Submit and continue</button>
+            </div>
+
+
+
+        </form>
+
+    </div>
+
+    <div class="modal fade" id="myModalF" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+                    <h4 class="modal-title" id="myModalLabelF"><b>Your solution:</b></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="itemsForPres" ng-repeat="item in itemsForPres track by $index">
+                    <!--<div class="items" ng-repeat="item in items">-->
+
+
+                        <!--<textarea ng-model="items[$index][0]; " class = "none"> {{ }}</textarea>-->
+                        <!--  <input type="button" ng-value="items[$index][0];" ng-click="coinClicked(items[$index])" >-->
+                        <!--  <img class="img-responsive smaller" ng-click="coinClicked(items[$index])" ng-src="{{coin}}" /></img>-->
+                        <img class="img-responsive smaller"
+                             ng-src="{{drawCoins(itemsForPres[$index][2],itemsForPres[$index][0],itemsForPres[$index][1])}}"
+                             ng-style = "{{setStylish(itemsForPres[$index][0],itemsForPres[$index][1])}}"/></img>
+
+                        <!--<img class="img-responsive smaller" ng-click="coinClicked(items[$index])"-->
+                             <!--ng-src="{{drawCoin(items[$index][2],items[$index][0],items[$index][1])}}"-->
+                             <!--ng-style = "{{setStyle(items[$index][0],items[$index][1])}}"/></img>-->
+
+                        <br>
+
+
+                        <br>
+
+                        <!--<a input type="button"><img id="followbutton1" ng-src="{{coin}}"  /></a>-->
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeButton" class="btn btn-default" data-dismiss="modal"  >Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

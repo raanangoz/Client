@@ -1,0 +1,94 @@
+.home-page-internal{
+    width: 700px;
+    height: 600px;
+    background-color: white;
+    border: 5px solid black;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+.home-page-container{
+
+    display: flex;
+    align-items: center; /* height*/
+    justify-content: center; /* width*/
+
+}
+
+.title{
+
+    font-size: 350%;
+    font-weight: bold;
+}
+
+.questions{
+
+    font-size: 200%;
+}
+
+#submit{
+
+    background-color: #f4f1d2;
+    color: black;
+}
+
+.form-group{
+
+    padding: 20px;
+
+}
+
+.buttonSubmit{
+
+    padding: 20px;
+    /* padding-top: 8px; */
+    padding-top: 30px;
+    padding-left: 250px;
+}
+
+.nextGame{
+
+    width: 150px;
+    height: 70px;
+    font-weight: bold;
+    font-size: 20px;
+
+
+
+}
+
+.fatI{
+
+    padding-top: 10px;
+}
+
+.itemsForPres{
+    display: inline-block;
+}
+
+.modal-content{
+
+    width:100%;
+    height: 70%;
+
+}
+
+.submitB{
+
+    height: 200px;
+    width: 200px;
+
+}
+.modal-body {
+    position: relative;
+    padding: 15px;
+    height: 80px;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 250px;
+}

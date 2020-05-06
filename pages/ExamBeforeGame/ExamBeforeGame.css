@@ -1,0 +1,153 @@
+.home-page-container{
+
+    display: flex;
+    align-items: center; /* height*/
+    justify-content: center; /* width*/
+
+}
+
+
+.home-page-internal{
+    width: 800px;
+    height: 650px;
+    background-color: white;
+    border: 5px solid cadetblue;
+    /*margin-bottom: 5px;*/
+    border-radius: 6px;
+    /*align-items: center;*/
+    /*position: relative;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+
+.titleExam{
+    font-size: 120px;
+    width: 100%;
+    height: 100px;
+    /*border:1px solid red;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*color: lightslategrey;*/
+    color: cadetblue;
+    font-weight: bold;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.slider-container{
+    width: 100%;
+    height: 540px;
+    /*display: grid;*/
+    /*grid-template-columns: 90px 1fr 90px;*/
+    overflow: auto;
+}
+.main-slide{
+    width: 100%;
+    height: 80%;
+
+}
+
+/*.icon{*/
+
+/*    !*position: absolute;*!*/
+/*    justify-self: center;*/
+/*    align-self: center;*/
+/*    width: 300px;*/
+/*    height: 100px;*/
+/*    !*padding-left: 50px;*!*/
+
+/*}*/
+
+.mySlides {
+
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.firstPiska{
+    font-size: 18px;
+    font-weight: bold;
+    align-self: center;
+    justify-content: center;
+    padding-top: 30px;
+    padding-left: 30px;
+
+}
+
+#firstPExam{
+
+    font-size: 20px;
+}
+
+.question{
+
+    padding-top: 40px;
+    padding-left: 52px;
+}
+
+.buttons{
+
+    position: absolute;
+    bottom: 200px;
+    margin:10px;
+}
+
+
+.w3-buttonPrev{
+    background-color: white;
+    color: black;
+    border: 2px solid cadetblue;
+    width:  70px;
+    height: 50px;
+    border-radius: 4px;
+}
+
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w3-buttonPrev:hover {background-color: #e7e7e7;}
+
+.w3-buttonNext{
+
+    background-color: white;
+    color: black;
+    border: 2px solid cadetblue;
+    width:  70px;
+    height: 50px;
+    border-radius: 4px;
+}
+
+.w3-buttonNext:hover {background-color: #e7e7e7;}
+
+.imageQ{
+
+    width:500px;
+    height: 250px;
+}
+
+.submit{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.submitButton{
+
+    margin-right: 300px;
+    background-color: white;
+    color: black;
+    border: 2px solid cadetblue;
+    width:  70px;
+    height: 50px;
+    border-radius: 4px;
+
+
+}
+
+.submitButton:hover {background-color: #e7e7e7;}

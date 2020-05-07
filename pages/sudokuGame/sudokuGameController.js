@@ -266,6 +266,7 @@ angular.module("sudokuApp")
                     $interval.cancel(interval);
                     document.getElementById("status").innerHTML = "Game Over";
                     $window.alert("Game Over");
+                    $scope.finishGame();
                     $location.url('/finishQuestion');
                 }
 

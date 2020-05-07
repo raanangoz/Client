@@ -339,8 +339,7 @@ angular.module("sudokuApp")
 
                     function movePage(){
 
-
-                        sessionStorage.setItem("KSProblem",Math.floor(Math.random() * 4) + 2);
+                        // sessionStorage.setItem("KSProblem",Math.floor(Math.random() * 4) + 2);
                         sessionStorage.setItem("KSpresentation", ""+$rootScope.KSpresentation);
                         console.log("KSpresentationStart= "+sessionStorage.getItem("KSpresentation"));
 

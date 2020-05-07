@@ -150,7 +150,7 @@ angular.module("sudokuApp")
             let countDown = new Date();
 
             //define the time + 15 minutes
-            countDown.setMinutes ( countDown.getMinutes() + 4 );  //15
+            countDown.setMinutes ( countDown.getMinutes() + 4 );  //4
 
             //init an interval of countdown
             interval= $interval(function() {
@@ -183,6 +183,7 @@ angular.module("sudokuApp")
                     $interval.cancel(interval);
                     document.getElementById("statusKS").innerHTML = "Game Over";
                     $window.alert("Game Over");
+                    $scope.finishGame();
                     $location.url('/finishQuestion');
                 }
 
@@ -350,7 +351,9 @@ angular.module("sudokuApp")
             $interval.cancel(interval);
 
             var newProb = generateRandomNumber(2,5);
-            while (newProb === sessionStorage.getItem("KSProblem")){
+            console.log("whileKSSSS: "+newProb.toString());
+            while (newProb.toString() == sessionStorage.getItem("KSProblem").toString()){
+                console.log("whileKSSSS: "+newProb.toString());
                 newProb = generateRandomNumber(2,5);
             }
             sessionStorage.setItem("KSProblem",newProb);
@@ -762,7 +765,9 @@ angular.module("sudokuApp")
             }
         }
         function generateRandomNumber(min,max) {
-                highlightedNumber = Math.random() * (max - min) + min;
+
+                let highlightedNumber = Math.floor(Math.random() * (max - min) + min);
+                return highlightedNumber;
 
             //alert(highlightedNumber);
         };

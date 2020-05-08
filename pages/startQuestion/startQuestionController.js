@@ -37,7 +37,7 @@ angular.module("sudokuApp")
         var userEducation;
 
         // var g= $scope.gender.value;
-        // console.log("g= "+g);
+        //// //console.log("g= "+g);
 
         //two arrays for the lottery between the games
         $rootScope.gameInstance = 1;
@@ -71,11 +71,11 @@ angular.module("sudokuApp")
                 userWorkerID = workerID.value;
                 userAge = age.value;
                 userGender = $scope.gender;
-                console.log("gender= " + userGender);
+                ////console.log("gender= " + userGender);
                 userHand = $scope.hand;
-                console.log("hand= " + userHand);
+                ////console.log("hand= " + userHand);
                 userEducation = $scope.education;
-                console.log("education= " + userEducation);
+                ////console.log("education= " + userEducation);
 
 
                 if (userWorkerID == "" || userWorkerID == undefined || !(userWorkerID.match(lettersAndNumbers))) {
@@ -129,7 +129,7 @@ angular.module("sudokuApp")
 
                                         if($rootScope.gameInstance=='3'){
 
-                                            console.log("here333333");
+                                            ////console.log("here333333");
 
                                             //0-weight presentation, 1-value presentation, 2-mix presentation
                                             $rootScope.KSpresentation = Math.floor(Math.random() * 3);
@@ -151,11 +151,11 @@ angular.module("sudokuApp")
                                                     .then(function(response) {
                                                         var place = "p"+KSpresentation;
                                                         console.dir("response= "+response.data[0][place]);
-                                                        console.log("response= "+ JSON.stringify(response.data[0][place]));
+                                                        ////console.log("response= "+ JSON.stringify(response.data[0][place]));
                                                         counterPresentation = response.data[0][place];
                                                         countersArray[KSpresentation]= response.data[0][place];
-                                                        console.log("counterPresentation= "+counterPresentation);
-                                                        console.log("countersArray[0] = "+countersArray[KSpresentation]);
+                                                        ////console.log("counterPresentation= "+counterPresentation);
+                                                        ////console.log("countersArray[0] = "+countersArray[KSpresentation]);
                                                         if(KSpresentation === 2){
                                                             checkCounter();
                                                         }
@@ -171,7 +171,7 @@ angular.module("sudokuApp")
 
                                             function checkCounter(){
                                                 // for (var i = 0; i <countersArray.length ; i++) {
-                                                //     console.log("cell1:"+countersArray[i]);
+                                                ////     //console.log("cell1:"+countersArray[i]);
                                                 //
                                                 // }
 
@@ -180,7 +180,7 @@ angular.module("sudokuApp")
 
                                                 for (var i = 0; i <countersArray.length  ; i++) {
                                                     if(countersArray[i] != 0){
-                                                        console.log("hereAllZero");
+                                                        ////console.log("hereAllZero");
                                                         allZero = false;
                                                     }
 
@@ -191,7 +191,7 @@ angular.module("sudokuApp")
                                                 }else{
 
                                                     while(countersArray[$rootScope.KSpresentation] === 0){
-                                                        console.log("herePres"+ countersArray[$rootScope.KSpresentation]);
+                                                        ////console.log("herePres"+ countersArray[$rootScope.KSpresentation]);
                                                         $rootScope.KSpresentation = Math.floor(Math.random() * 3);
                                                     }
 
@@ -209,10 +209,10 @@ angular.module("sudokuApp")
 
                                             // while(counterPresentation === 0){
                                             //
-                                            //     console.log("hereWhilecounterPresentation === 0")
+                                            ////     //console.log("hereWhilecounterPresentation === 0")
                                             //
-                                            //     console.log("KSpresentation= "+$rootScope.KSpresentation);
-                                            //     console.log('http://localhost:3000/Knapsack/getPresentationCounter/'+$rootScope.KSpresentation);
+                                            ////     //console.log("KSpresentation= "+$rootScope.KSpresentation);
+                                            ////     //console.log('http://localhost:3000/Knapsack/getPresentationCounter/'+$rootScope.KSpresentation);
                                             //
                                             //
                                             //
@@ -252,7 +252,7 @@ angular.module("sudokuApp")
 
                                         function movePage(){
                                             sessionStorage.setItem("KSpresentation", ""+$rootScope.KSpresentation);
-                                            console.log("KSpresentationStart= "+sessionStorage.getItem("KSpresentation"));
+                                            ////console.log("KSpresentationStart= "+sessionStorage.getItem("KSpresentation"));
 
 
 
@@ -268,7 +268,7 @@ angular.module("sudokuApp")
 
 
 
-                                            console.log("number= " + $rootScope.gameInstance);
+                                            ////console.log("number= " + $rootScope.gameInstance);
                                             //pass to tutorial
                                             $location.url('/Tutorial');
 
@@ -279,7 +279,7 @@ angular.module("sudokuApp")
                                     })
 
 
-                                    console.log("hereeeeee");
+                                    ////console.log("hereeeeee");
                                 }, function (response) {
                                     // $scope.records = response.statusText;
                                 });

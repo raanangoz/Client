@@ -15,7 +15,7 @@ angular.module("sudokuApp")
         });
 
         $rootScope.gameInstance = sessionStorage.getItem("gameInstance");
-        console.log("gameInstanceExam= "+$rootScope.gameInstance);
+        // //console.log("gameInstanceExam= "+$rootScope.gameInstance);
         // document.getElementById("prevExam").style.visibility = "hidden";
         var slideIndex = 1;
         showDivs(slideIndex);
@@ -150,17 +150,17 @@ angular.module("sudokuApp")
             let answers = [];
 
             //// let answer = document.querySelector('input[name!="null"]');
-            //// console.log(document.querySelector('input[name="op"]:checked').value);
+            //// //console.log(document.querySelector('input[name="op"]:checked').value);
             let answer0 = $scope.a;
-            console.log(answer0);
+            ////console.log(answer0);
             let answer1 = $scope.b;
-            console.log(answer1);
+            ////console.log(answer1);
             let answer2 = $scope.c;
-            console.log(answer2);
+            ////console.log(answer2);
             let answer3 = $scope.d;
-            console.log(answer3);
+            ////console.log(answer3);
             //// let answer4 = $scope.e;
-            //// console.log(answer4);
+            //// //console.log(answer4);
 
             if(answer0=== undefined || answer1===undefined || answer2=== undefined || answer3===undefined){
                 window.alert("You have to answer every question before press 'Submit'");

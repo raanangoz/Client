@@ -10,7 +10,7 @@ angular.module("sudokuApp")
                 let games = $scope.games;
 
                 if ($scope.exam == undefined) {
-                    console.log("exam undef");
+                    //console.log("exam undef");
                     exam = "NULL";
                 }
                 if ($scope.tutorial == undefined)

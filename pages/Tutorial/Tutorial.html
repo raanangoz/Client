@@ -51,10 +51,9 @@
                         <h id= "desKS" ng-if="ks">
                             The next task is to solve a Knapsack problem.<br/>
                             The knapsack problem is a problem in combinatorial optimization:<br>
-                            Given a set of items, each has a weight and a value, you have to insert a set of items into the bag. <br/>
-                            The objective is to find the set of items that produce the highest total value.<br>
-                            The constraint is the limited size of the bag. The sum of the weights of the chosen items,   <br/>
-                            can not exceed the size of the bug.
+                            Given a set of items, each with a weight and a value, determine items to include<br>
+                            in a collection so that the total weight is less than or equal to a given limit, <br>
+                            and the total value is as large as possible.
 
                             <br>
                         </h>
@@ -134,7 +133,7 @@
                                 doesn't exist at this line/ column/ square</b></p>
                             <p class="note" ng-if="colors"><b> Note: the icon "?" located at the right corner of some cells represents<br/>
                                 cells which should be filled during the game</b></p>
-                            <p  ng-if="ks"><b>This state is possible because the current total weight <br/>
+                            <p  ng-if="ks"><b>This state is possible(but not necessarily the best) because the current total weight <br/>
                                 is equal to the given limit </b></p>
                         </div>
                     </div>
@@ -154,7 +153,7 @@
                             <p  ng-if="colors"><b>This step (marked with "V") is possible because the orange color <br/>
                                 doesn't exist at this line/ column/ square</b></p>
                             <p  ng-if="ks"><b>This state is possible because the current total weight <br/>
-                                is less than the given limit </b></p>
+                                is lower than the given limit. (This is not the best solution, though). </b></p>
                         </div>
                     </div>
                 </div>
@@ -183,7 +182,7 @@
                             <p class="note" ng-if="colors"><b> Note: the icon "?" located at the right corner of some cells represents<br/>
                                 cells which should be filled during the game</b></p>
                             <p  ng-if="ks"><b>This state is possible because the current total weight <br/>
-                                is less than the given limit </b></p>
+                                is less than the given limit. (This is not the best solution). </b></p>
                         </div>
                     </div>
                 </div>
@@ -200,8 +199,11 @@
                             <p ng-if="numbers"><b>This step (marked with "X") is incorrect because the "2" digit is already exist at this column</b></p>
                             <p  ng-if="colors"><b>This step (marked with "X") is incorrect because the pink color is already exist at this column</b></p>
                             <p  ng-if="ks"><b>This state is possible because the current total weight <br/>
-                                is less than the given limit, </b><br/>
-                                You can see that the state in the previous slide is better than the state in the current slide   because the gained value there is higher<br/></p>
+                                is lower than the given limit, </b><br/>
+                                This is just the same instance of the problem presented in the previous slide,<br/>
+                                but here, a worse solution is presented, since the total value gained is 10, <br>
+                                compared to 11 in the previous slide.
+                            </p>
 
                         </div>
                     </div>

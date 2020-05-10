@@ -15,8 +15,8 @@
         <div  ng-repeat="field in row track by $index" ng-init="colIndex = $index" class="one-box"
 
              ng-click="onBoxClick(field, colIndex, rowIndex)"
-             ng-class="{'red' : field===1, 'lightskyblue': field===2 ,'lightGreen': field===3,
-                    'yellow': field===4 , 'green': field===5 , 'orange': field===6 ,'blue': field===7 , 'brown': field===8 , 'pink': field===9
+             ng-class="{'red' : field===1 && typeCase, 'lightskyblue': field===2 && typeCase ,'lightGreen': field===3 && typeCase,
+                    'yellow': field===4 && typeCase , 'green': field===5 && typeCase, 'orange': field===6 && typeCase ,'blue': field===7 && typeCase , 'brown': field===8 && typeCase, 'pink': field===9 && typeCase
                     ,'right-border': colIndex === 2 || colIndex === 5, 'bottom-border': rowIndex === 2 || rowIndex === 5,
                     'bold-border': initialBoard[rowIndex][colIndex] !== '0' && typeCase}">
 
@@ -130,6 +130,27 @@
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal" ng-click="finishGame()">Yes</button>
                     <button type="button" data-dismiss="modal"  >No</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+                    <h4 class="modal-title" id="myModalLabel3"><b></b></h4>
+                </div>
+                <div class="modal-body">
+                    <b>You have to finish the puzzle first</b>
+                </div>
+                <br>
+                <div class="modal-footer">
+<!--                    <button type="button"  data-dismiss="modal" ng-click="finishGame()">Yes</button>-->
+                    <button type="button" data-dismiss="modal"  >Close</button>
 
                 </div>
             </div>

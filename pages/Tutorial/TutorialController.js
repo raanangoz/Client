@@ -51,7 +51,7 @@ angular.module("sudokuApp")
                 $scope.colors= false;
                 $scope.ks= true;
                 // $rootScope.wasKS++;
-                sessionStorage.setItem("wasKS","true");
+                //sessionStorage.setItem("wasKS","true");
 
             }
 
@@ -85,11 +85,17 @@ angular.module("sudokuApp")
             showDivs(slideIndex -= 1, -1);
             familiarityAgainPrevSudoku = true;
 
+
         }
 
 
 
         function showDivs(n, z) {
+
+
+            document.getElementById("next").innerHTML = "Next >";
+            document.getElementById("next").style.width = "70px";
+            document.getElementById("next").style.height = "50px";
 
             if(slideIndex === 1){
                 document.getElementById("prev").style.visibility = "hidden";
@@ -124,9 +130,10 @@ angular.module("sudokuApp")
             }
 
             //last slide and already made a test
-            if( ($rootScope.gameInstance == 1 || $rootScope.gameInstance ==0) && slideIndex === x.length && sessionStorage.getItem("wasSudoko") === 'true'){
-                //console.log("hereIfNotExam");
-                //console.log("wasSudoku= "+sessionStorage.getItem("wasSudoko") === 'true');
+            if( ($rootScope.gameInstance == 1 || $rootScope.gameInstance ==0) && slideIndex === x.length && sessionStorage.getItem("wasSudoko") === 'true'
+            && sessionStorage.getItem("passTest")==='true'){
+                console.log("hereIfNotExam");
+                console.log("wasSudoku= "+sessionStorage.getItem("wasSudoko") === 'true');
                 $location.url('/pageBeforeGame');
 
 
@@ -161,9 +168,17 @@ angular.module("sudokuApp")
 
             //KS case
             if(($rootScope.gameInstance == 2 || $rootScope.gameInstance ==3) &&  slideIndex === x.length-1){
-                document.getElementById("next").style.visibility = "hidden";
+                if(sessionStorage.getItem("wasKS")=== 'true'){
+                    next();
+
+                }else{
+                    document.getElementById("next").style.visibility = "hidden";
+                }
+
 
             }
+
+
 
 
         }
@@ -208,6 +223,12 @@ angular.module("sudokuApp")
 
         $scope.startExam = function () {
 
+            if($rootScope.gameInstance == 0 || $rootScope.gameInstance == 1 ){
+                sessionStorage.setItem("wasSudoko", "true");
+            }
+            else{
+                sessionStorage.setItem("wasKS", "true");
+            }
             $location.url('/ExamBeforeGame');
 
         }

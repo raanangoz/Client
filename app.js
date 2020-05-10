@@ -40,11 +40,11 @@ app.config(function($routeProvider)  {
             controller : 'finishQuestionController as finishQuestionCtrl'
         })
 
-        .when('/description', {
-            // this is a template
-            templateUrl: 'pages/description/description.html',
-            controller : 'descriptionController as descriptionCtrl'
-        })
+        // .when('/description', {
+        //     // this is a template
+        //     templateUrl: 'pages/description/description.html',
+        //     controller : 'descriptionController as descriptionCtrl'
+        // })
         .when('/KnapsackGame', {
             // this is a template
             templateUrl: 'pages/KnapsackGame/KnapsackGame.html',

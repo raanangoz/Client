@@ -176,6 +176,13 @@ angular.module("sudokuApp")
 
                             });
                         answered = true;
+                        var newProb = generateRandomNumber(2,5);
+                        ////console.log("whileKSSSS: "+newProb.toString());
+                        while (newProb.toString() == sessionStorage.getItem("KSProblem").toString()){
+                            ////console.log("whileKSSSS: "+newProb.toString());
+                            newProb = generateRandomNumber(2,5);
+                        }
+                        sessionStorage.setItem("KSProblem",newProb);
                     }
                     else{
                         $window.alert("Please answer the last question correctly.");
@@ -402,19 +409,19 @@ angular.module("sudokuApp")
 
             ////console.log("presKS= "+$scope.presen);
             ////console.log($scope.itemsForPres);
-            $scope.top = [10,10,10,10,150,150,150,150,290,290,290,290]
-            $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54]
+            $scope.top = [10,10,10,10,150,150,150,150,290,290,290,290,430]
+            $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54,3]
             $scope.countTopPres = 0
             $scope.countLeftPres =0;
             $scope.count= 0;
 
             $rootScope.instance = sessionStorage.getItem("KSProblem");
-            $scope.pres2ByWeight = [6.9,12 ,11 ,6.5 ,8.5 ,10.5 ,7.5 ,7.8 ,9.7 ,9 ]
+            $scope.pres2ByWeight = [6.9,12 ,11 ,6.5 ,8.5 ,10.5 ,7.5 ,7.8 ,9.7 ,9 ,7.2,7,6.7]
             $scope.pres3ByWeight = [11.5,7 ,10 ,6.5 ,6.7 ,12.2 ,9 ,9.4 ,11 ,10.7 ]
             $scope.pres4ByWeight = [8,9.5 ,6.5 ,11 ,6.5 , 7.5,6.5 ,11 ,12.5 ,9.5 ]
             $scope.pres5ByWeight = [7.4,11.8 ,10 ,7.2 ,7 , 12.5,9.8 ,9.5 ,11.8 ,6.5 ]
 
-            $scope.pres2ByValue = [7.1,10.0 ,12.5 ,6.9 ,8.1 ,9.8 ,6.5 ,8 ,10.5 ,9 ]
+            $scope.pres2ByValue = [7.1,10.0 ,12.5 ,6.9 ,8.1 ,9.8 ,6.5 ,8 ,10.5 ,9 ,10.1,11,7.1]
             $scope.pres3ByValue = [11.5 ,7.4 ,8.9 ,6.5 ,6.9 ,12.5 ,7.6 ,8 ,8.5 ,10.2 ]
             $scope.pres4ByValue = [8 ,10 ,7 ,6.5 ,9 ,10.8 ,7.5 ,10 ,12.5 ,9 ]
             $scope.pres5ByValue = [6.9 ,9.2 ,12.5 ,8.4 ,8.1 ,11 ,8.5 ,9 ,7.2 ,6.5]
@@ -514,16 +521,17 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/Sx5L7ZU.png"
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/3fbYPQQ.png"
-                if (weight==35 && value ==30)
-                    return "https://i.imgur.com/9yvt09E.png"
-                if (weight==100 && value ==74)
-                    return "https://i.imgur.com/SbveVWy.png"
-                if (weight==95 && value ==85)
-                    return "https://i.imgur.com/kvgsQzJ.png"
+                if (weight==35 && value ==30) // good
+                    return "https://i.imgur.com/pYUGiDb.png"
+                if (weight==100 && value ==74)// good
+                    return "https://i.imgur.com/3MkOfFy.png"
+                if (weight==95 && value ==85)// good
+                    return "https://i.imgur.com/jSDRcXG.png"
 
 
             }
             else{
+
                 if (weight==50 && value ==37)
                     return "https://i.imgur.com/FX0nbLq.png"
                 if (weight==820 && value ==72)
@@ -608,11 +616,11 @@ angular.module("sudokuApp")
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/xIHsaff.png"
                 if (weight==35 && value ==30)
-                    return "https://i.imgur.com/pYUGiDb.png"
+                    return "https://i.imgur.com/9yvt09E.png"
                 if (weight==100 && value ==74)
-                    return "https://i.imgur.com/3MkOfFy.png"
+                    return "https://i.imgur.com/SbveVWy.png"
                 if (weight==95 && value ==85)
-                    return "https://i.imgur.com/jSDRcXG.png"
+                    return "https://i.imgur.com/kvgsQzJ.png"
             }
 
         }
@@ -649,10 +657,10 @@ angular.module("sudokuApp")
         function heaviestOfOpt(){
             ////console.log("puzzle is" + puzzle);
             if(puzzle == 2){
-                $scope.heavy1 = 360;
+                $scope.heavy1 = 820;
                 $scope.heavy2 = 435;//correct
-                $scope.heavy3 = 220;
-                $scope.heavy4 = 180;
+                $scope.heavy3 = 700;
+                $scope.heavy4 = 530;
             }
             if(puzzle == 3){
                 $scope.heavy1 = 26;
@@ -670,7 +678,7 @@ angular.module("sudokuApp")
                 $scope.heavy1 = 55;
                 $scope.heavy2 = 41;
                 $scope.heavy3 = 50;
-                $scope.heavy4 = 34;
+                $scope.heavy4 = 55;
             }
 
 
@@ -682,4 +690,16 @@ angular.module("sudokuApp")
             //  4         8       12  , 10, 6
             //  5         41,     50 , 55 , 34
         }
+        function generateRandomNumber(min,max) {
+
+
+            let highlightedNumber = Math.floor(Math.random() * (max - min) + min);
+            if(highlightedNumber== 2 || highlightedNumber== 3) {
+                return 2;
+            }
+            else return 5;
+
+
+            //alert(highlightedNumber);
+        };
     })

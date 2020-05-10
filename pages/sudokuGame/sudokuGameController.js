@@ -83,13 +83,13 @@ angular.module("sudokuApp")
             if (hasValue) {
                 oldValue = JSON.parse(sessionStorage.getItem("solutionBoard"))[row][col];
             }
-            console.log("oldVal= "+oldValue);
+            //console.log("oldVal= "+oldValue);
             //
             // if($scope.sudokuBoard[row][col] != '' ){
             //     console.log("hereTest");
             //     hasValue = true;
             // }
-            console.log("row: " + row + ", col : " + col + ", val: " + val);
+            //console.log("row: " + row + ", col : " + col + ", val: " + val);
             var stringsecond = second;
             if (second < 10)
                 stringsecond = "0" + second;
@@ -97,7 +97,7 @@ angular.module("sudokuApp")
             if (minute < 10)
                 stringminute = "0" + minute;
             $scope.sudokuBoard[row][col] = '';
-            console.log("gameID===="+GameID);
+            //console.log("gameID===="+GameID);
 
             var value;
             var legalNum = false;
@@ -105,7 +105,7 @@ angular.module("sudokuApp")
 
             //move of delete
             if(val == "" ){
-                console.log("hereDelete123");
+
                 value = "";
 
             }
@@ -114,13 +114,12 @@ angular.module("sudokuApp")
             else{
 
                 value = Number(val);
-                console.log("value= "+value);
-                console.log("has value= "+hasValue);
+                // console.log("value= "+value);
+                // console.log("has value= "+hasValue);
                 if (value >= 1 && value <= 9) {
                     $scope.sudokuBoard[row][col] = value;
                     legalNum = true;
                     if(hasValue){
-                        console.log("hereeeeeeeeeeeeeeeeeeeeeeeeee");
                         //delete the old value
                         $http({
 
@@ -179,8 +178,8 @@ angular.module("sudokuApp")
 
             if( (value === "" || legalNum) && toInsert){
 
-                console.log("valueInIf= "+value);
-                console.log("legalNumInIf= "+legalNum);
+                // console.log("valueInIf= "+value);
+                // console.log("legalNumInIf= "+legalNum);
                 $http({
 
                     method: 'POST',
@@ -264,7 +263,6 @@ angular.module("sudokuApp")
         $scope.timer = function (){
 
             $scope.gameStarted = true;
-            console.log("hereTimer");
 
             second = sessionStorage.getItem("second") || 1;
             minute = sessionStorage.getItem("minute") || 15;  //TODO CHANGE TO 15
@@ -301,7 +299,6 @@ angular.module("sudokuApp")
 
                 if(document.getElementById("status") != null){
 
-                    console.log("hereInnerrrr");
                     document.getElementById("status").innerHTML = "Time Left: "
                         + minute + "m " + second + "s ";
                 }
@@ -316,9 +313,9 @@ angular.module("sudokuApp")
         //init board and game
         $scope.init = function(){
 
-            console.log("startInittt");
-            console.dir(sessionStorage.getItem("second"));
-            console.dir(sessionStorage.getItem("minute"));
+
+            // console.dir(sessionStorage.getItem("second"));
+            // console.dir(sessionStorage.getItem("minute"));
 
             // if(sessionStorage.getItem("second")== null){
             //     console.log("hereIFinittttttt");
@@ -336,8 +333,8 @@ angular.module("sudokuApp")
             minute = sessionStorage.getItem("minute") || 15; //TODO CHANGE TO 15
 
 
-            console.log("secondInit= "+second);
-            console.log("minuteInit= "+minute);
+            // console.log("secondInit= "+second);
+            // console.log("minuteInit= "+minute);
             // if(sessionStorage.getItem("second") != null){
             //     fromSession = true;
             //     second = sessionStorage.getItem("second");
@@ -352,7 +349,7 @@ angular.module("sudokuApp")
             //
             //     minute = sessionStorage.getItem("minute") || (1000 * 60);
 
-            console.log("Init: minutes: " + minute + ", second: " + second);
+            //console.log("Init: minutes: " + minute + ", second: " + second);
             //
             // }else{
             //     minute = sessionStorage.getItem("second");
@@ -365,7 +362,7 @@ angular.module("sudokuApp")
 
             //random 1/2 for choosing the instance of the board
             if(sessionStorage.getItem("PuzzleIDRandom") == null){
-                console.log("hereSessionPuzzle");
+                //console.log("hereSessionPuzzle");
                 PuzzleIDRandom = Math.floor(Math.random() * 2);
                 sessionStorage.setItem("PuzzleIDRandom", ""+PuzzleIDRandom);
 
@@ -482,7 +479,7 @@ angular.module("sudokuApp")
 
                         }
 
-                        console.log("print board initial: ");
+                        //console.log("print board initial: ");
                         console.dir($scope.sudokuBoard);
                     }
 
@@ -528,7 +525,7 @@ angular.module("sudokuApp")
 
 
             setTimeout(function() {
-                console.log("hereTIMEOUT");
+                //console.log("hereTIMEOUT");
                 if(sessionStorage.getItem("second")== null){
                     $('#myModal').modal();
                 }else{
@@ -598,20 +595,20 @@ angular.module("sudokuApp")
                     if($scope.initialBoard[i][j] === '0'){
 
                         if($scope.sudokuBoard[i][j] != ''){
-                            console.log("hereIfBoxes");
+                            //console.log("hereIfBoxes");
                             $rootScope.boxes ++;
                             sessionStorage.setItem("boxes",$rootScope.boxes);
-                            console.log("boxes"+sessionStorage.getItem("boxes"));
+                            //console.log("boxes"+sessionStorage.getItem("boxes"));
                         }
                     }
 
                 }
             }
 
-            console.log("newBoxes= "+$rootScope.boxes);
-
-            console.log("second11111= "+second);
-            console.log("minute11111= "+minute);
+            // console.log("newBoxes= "+$rootScope.boxes);
+            //
+            // console.log("second11111= "+second);
+            // console.log("minute11111= "+minute);
             let totalTime = calculateTotalTime();
             solutionAndTimeToDB(totalTime);
 
@@ -628,11 +625,11 @@ angular.module("sudokuApp")
                 // console.log("field= "+field);
                 //field.style.backgroundColor = "blue";
                 //sudokuBoard[$parent.$index][$index].style.backgroundColor= "blue";
-                console.log("row= "+row);
-                console.log("col= "+col);
+                // console.log("row= "+row);
+                // console.log("col= "+col);
                 //$scope.sudokuBoard[row][col].style.backgroundColor = "blue";
                 //document.getElementById("board")[row][col].style.backgroundColor = "blue";
-                console.log("ans= "+document.getElementById("temp"));
+                //console.log("ans= "+document.getElementById("temp"));
                 document.getElementById("temp").style.backgroundColor = "blue";
                 // $scope.putColor = {
                 //

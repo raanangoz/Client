@@ -132,8 +132,8 @@ angular.module("sudokuApp")
             //last slide and already made a test
             if( ($rootScope.gameInstance == 1 || $rootScope.gameInstance ==0) && slideIndex === x.length && sessionStorage.getItem("wasSudoko") === 'true'
             && sessionStorage.getItem("passTest")==='true'){
-                console.log("hereIfNotExam");
-                console.log("wasSudoku= "+sessionStorage.getItem("wasSudoko") === 'true');
+                // console.log("hereIfNotExam");
+                // console.log("wasSudoku= "+sessionStorage.getItem("wasSudoko") === 'true');
                 $location.url('/pageBeforeGame');
 
 

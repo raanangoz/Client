@@ -142,7 +142,6 @@ angular.module("sudokuApp")
         $scope.timer = function (){
 
             $scope.gameStarted = true;
-            console.log("hereTimer");
 
             second = sessionStorage.getItem("second") || 1;
             minute = sessionStorage.getItem("minute") || 2;  //TODO CHANGE TO 4
@@ -179,7 +178,6 @@ angular.module("sudokuApp")
 
                 if(document.getElementById("statusKS") != null){
 
-                    console.log("hereInnerrrr");
                     document.getElementById("statusKS").innerHTML = "Time Left: "
                         + minute + "m " + second + "s ";
                 }
@@ -223,7 +221,7 @@ angular.module("sudokuApp")
                     const weights = stringweights.split(',');
                     const values = stringvalues.split(',');
                     items = new Array (weights.length);
-                    console.log(items);
+                    //console.log(items);
                     $scope.objectNumber = weights.length;
 
                     for(let index = 0 ; index < weights.length; index++){
@@ -282,7 +280,7 @@ angular.module("sudokuApp")
 
 
             setTimeout(function() {
-                console.log("hereTIMEOUT");
+
                 if(sessionStorage.getItem("second")== null){
                     $('#myModalKS').modal();
                 }else{
@@ -410,7 +408,7 @@ angular.module("sudokuApp")
 
         }
         $scope.coinClicked = function (item) {
-            console.log("clicked")
+            //console.log("clicked")
             let stringsecond = second;
             if (second < 10)
                 stringsecond = "0" + second;
@@ -428,9 +426,9 @@ angular.module("sudokuApp")
             else
                 type = "extract";
             if ((itemWeight + sizeUsed <= bagsize && itemInBag == false) || itemInBag) {//legal move
-                console.log("min: "+stringminute)
-                console.log("sec: "+stringsecond)
-                console.log(stringminute + ":" + stringsecond)
+                // console.log("min: "+stringminute)
+                // console.log("sec: "+stringsecond)
+                // console.log(stringminute + ":" + stringsecond)
                 var timeToDb = stringminute + ":" + stringsecond;
                 $http({
 

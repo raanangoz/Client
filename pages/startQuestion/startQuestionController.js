@@ -118,7 +118,6 @@ angular.module("sudokuApp")
                                         let userID = response.data[0].maxid;
                                         $rootScope.userID = userID;
                                         sessionStorage.setItem("userID",userID);
-
                                         $rootScope.gameInstance = Math.floor(Math.random() * 4);
                                         sessionStorage.setItem("KSProblem",Math.floor(Math.random() * 4) + 2);
                                         // $rootScope.gameInstance = 2;

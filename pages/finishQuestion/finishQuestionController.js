@@ -407,6 +407,7 @@ angular.module("sudokuApp")
             $scope.presen = sessionStorage.getItem("KSpresentation");
             $scope.itemsForPres = JSON.parse(sessionStorage.getItem("items"));
 
+
             ////console.log("presKS= "+$scope.presen);
             ////console.log($scope.itemsForPres);
             $scope.top = [10,10,10,10,150,150,150,150,290,290,290,290,430]
@@ -627,9 +628,12 @@ angular.module("sudokuApp")
 
 
         $scope.setStylish = function (weight,value) {
-            if ($scope.countTopPres>=10){
-                $scope.countTopPres=0;
+            if (puzzle == 2){
+                if ($scope.countTopPres >= 13) {
+                    $scope.countTopPres = 0;
+                }
             }
+            else
             if ($scope.countLeftPres>=10){
                 $scope.countLeftPres=0;
             }

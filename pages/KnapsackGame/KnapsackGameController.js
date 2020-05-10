@@ -45,8 +45,9 @@ angular.module("sudokuApp")
         $scope.loading = true;
         $scope.message = null;
 
+
         ///////////////////////////
-        $scope.top = [10,10,10,10,35,35,35,35,60,60,60,60,85,85,85,85];
+        $scope.top = [10,10,10,10,35,35,35,35,60,60,60,60,85,130,85,85];
         $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54,3,20,37];
         $scope.countTop = 0;
         $scope.countLeft =0;
@@ -222,6 +223,7 @@ angular.module("sudokuApp")
                     const weights = stringweights.split(',');
                     const values = stringvalues.split(',');
                     items = new Array (weights.length);
+                    console.log(items);
                     $scope.objectNumber = weights.length;
 
                     for(let index = 0 ; index < weights.length; index++){
@@ -672,6 +674,9 @@ angular.module("sudokuApp")
 
         }
         $scope.setStyle = function (weight,value) {
+            // console.log("top"+ $scope.top[$scope.countTop]);
+            // console.log("left"+ $scope.left[$scope.countLeft]);
+
             //// //console.log(weight);
             //// //console.log(value);
             //// ////console.log(a)

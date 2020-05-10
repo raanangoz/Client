@@ -171,12 +171,14 @@ angular.module("sudokuApp")
                 answer1==questionsFromServer[1].correctAnswer&&
                 answer2==questionsFromServer[2].correctAnswer&&
                 answer3==questionsFromServer[3].correctAnswer){
+                sessionStorage.setItem("passTest", "true");
             $location.url('/pageBeforeGame');
             }
 
             else{
                 window.alert("You did not answer all the questions correctly. \n" +
                     "You are redirected to the tutorial.")
+                sessionStorage.setItem("passTest", "false");
                 $location.url('/Tutorial');
             }
 

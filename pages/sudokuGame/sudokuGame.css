@@ -63,10 +63,10 @@ h1{
     margin: 0 auto;
 }
 
-.conflict{
-    border: 2px solid #ff0000;
+/*.conflict{*/
+/*    border: 2px solid #ff0000;*/
 
-}
+/*}*/
 
 .ok {
     color: #00ff00;
@@ -158,11 +158,11 @@ body{
     size: B4;
 }
 
-.redDec{
-    background-color: red;
-    color: red;
+/*.redDec{*/
+/*    background-color: red;*/
+/*    color: red;*/
 
-}
+/*}*/
 
 #declaration {
 

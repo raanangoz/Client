@@ -150,7 +150,7 @@ angular.module("sudokuApp")
             let countDown = new Date();
 
             //define the time + 15 minutes
-            countDown.setMinutes ( countDown.getMinutes() + 4 );  //4
+            countDown.setMinutes ( countDown.getMinutes() + 1 );  //TODO CHANGE TO 4
 
             //init an interval of countdown
             interval= $interval(function() {

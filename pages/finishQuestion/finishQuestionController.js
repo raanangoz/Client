@@ -409,12 +409,12 @@ angular.module("sudokuApp")
             $scope.count= 0;
 
             $rootScope.instance = sessionStorage.getItem("KSProblem");
-            $scope.pres2ByWeight = [6.9,12 ,11 ,6.5 ,8.5 ,10.5 ,7.5 ,7.8 ,9.7 ,9 ]
+            $scope.pres2ByWeight = [6.9,12 ,11 ,6.5 ,8.5 ,10.5 ,7.5 ,7.8 ,9.7 ,9 ,7.2,7,6.7]
             $scope.pres3ByWeight = [11.5,7 ,10 ,6.5 ,6.7 ,12.2 ,9 ,9.4 ,11 ,10.7 ]
             $scope.pres4ByWeight = [8,9.5 ,6.5 ,11 ,6.5 , 7.5,6.5 ,11 ,12.5 ,9.5 ]
             $scope.pres5ByWeight = [7.4,11.8 ,10 ,7.2 ,7 , 12.5,9.8 ,9.5 ,11.8 ,6.5 ]
 
-            $scope.pres2ByValue = [7.1,10.0 ,12.5 ,6.9 ,8.1 ,9.8 ,6.5 ,8 ,10.5 ,9 ]
+            $scope.pres2ByValue = [7.1,10.0 ,12.5 ,6.9 ,8.1 ,9.8 ,6.5 ,8 ,10.5 ,9 ,10.1,11,7.1]
             $scope.pres3ByValue = [11.5 ,7.4 ,8.9 ,6.5 ,6.9 ,12.5 ,7.6 ,8 ,8.5 ,10.2 ]
             $scope.pres4ByValue = [8 ,10 ,7 ,6.5 ,9 ,10.8 ,7.5 ,10 ,12.5 ,9 ]
             $scope.pres5ByValue = [6.9 ,9.2 ,12.5 ,8.4 ,8.1 ,11 ,8.5 ,9 ,7.2 ,6.5]

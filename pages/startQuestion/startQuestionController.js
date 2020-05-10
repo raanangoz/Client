@@ -119,7 +119,7 @@ angular.module("sudokuApp")
                                         $rootScope.userID = userID;
                                         sessionStorage.setItem("userID",userID);
                                         $rootScope.gameInstance = Math.floor(Math.random() * 4);
-                                        sessionStorage.setItem("KSProblem",Math.floor(Math.random() * 4) + 2);
+                                        sessionStorage.setItem("KSProblem",generateRandomNumber(2,5).toString());//TODO
                                         // $rootScope.gameInstance = 2;
 
                                         //everyone presentation
@@ -289,6 +289,17 @@ angular.module("sudokuApp")
                 }
 
             }
+        function generateRandomNumber(min,max) {
+
+            let highlightedNumber = Math.floor(Math.random() * (max - min) + min);
+            if(highlightedNumber== 2 || highlightedNumber== 3)
+                return 2;
+            else return 5;
+
+
+            //alert(highlightedNumber);
+        };
 
         }
+
     )

@@ -514,6 +514,12 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/Sx5L7ZU.png"
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/3fbYPQQ.png"
+                if (weight==35 && value ==30)
+                    return "https://i.imgur.com/9yvt09E.png"
+                if (weight==100 && value ==74)
+                    return "https://i.imgur.com/SbveVWy.png"
+                if (weight==95 && value ==85)
+                    return "https://i.imgur.com/kvgsQzJ.png"
 
 
             }
@@ -601,7 +607,12 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/ET4ZbT2.png"
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/xIHsaff.png"
-
+                if (weight==35 && value ==30)
+                    return "https://i.imgur.com/pYUGiDb.png"
+                if (weight==100 && value ==74)
+                    return "https://i.imgur.com/3MkOfFy.png"
+                if (weight==95 && value ==85)
+                    return "https://i.imgur.com/jSDRcXG.png"
             }
 
         }

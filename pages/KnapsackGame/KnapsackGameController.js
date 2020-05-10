@@ -481,7 +481,6 @@ angular.module("sudokuApp")
             //// //console.log($scope.items);
 
             if (!isChosen) {
-
                 if (weight==50 && value ==37)
                     return "https://i.imgur.com/HBJTrNN.png"
                 if (weight==820 && value ==72)
@@ -565,21 +564,17 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/Sx5L7ZU.png"
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/3fbYPQQ.png"
-                if (weight==35 && value ==30)
-                    return "https://i.imgur.com/9yvt09E.png"
-                if (weight==100 && value ==74)
-                    return "https://i.imgur.com/SbveVWy.png"
-                if (weight==95 && value ==85)
-                    return "https://i.imgur.com/kvgsQzJ.png"
+                if (weight==35 && value ==30) // good
+                    return "https://i.imgur.com/pYUGiDb.png"
+                if (weight==100 && value ==74)// good
+                    return "https://i.imgur.com/3MkOfFy.png"
+                if (weight==95 && value ==85)// good
+                    return "https://i.imgur.com/jSDRcXG.png"
+
 
             }
             else{
-                if (weight==35 && value ==30)
-                    return "https://i.imgur.com/pYUGiDb.png"
-                if (weight==100 && value ==74)
-                    return "https://i.imgur.com/3MkOfFy.png"
-                if (weight==95 && value ==85)
-                    return "https://i.imgur.com/jSDRcXG.png"
+
                 if (weight==50 && value ==37)
                     return "https://i.imgur.com/FX0nbLq.png"
                 if (weight==820 && value ==72)
@@ -613,7 +608,7 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/YQdLza6.png"
                 if (weight==52 && value ==59)
                     return "https://i.imgur.com/9ivTMzw.png"
-                if (weight==48 && value ==47)
+                if(weight==48 && value ==47)
                     return "https://i.imgur.com/eLQw9XX.png"
                 if (weight==55 && value ==45)
                     return "https://i.imgur.com/i8WWkCW.png"
@@ -663,7 +658,12 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/ET4ZbT2.png"
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/xIHsaff.png"
-
+                if (weight==35 && value ==30)
+                    return "https://i.imgur.com/9yvt09E.png"
+                if (weight==100 && value ==74)
+                    return "https://i.imgur.com/SbveVWy.png"
+                if (weight==95 && value ==85)
+                    return "https://i.imgur.com/kvgsQzJ.png"
             }
             // if (!item)
             //     return $scope.coin;

@@ -30,7 +30,7 @@ angular.module("sudokuApp")
         var second;
         var minute;
         let a = Math.floor(Math.random()* (5)+7)
-        $scope.sizes = [Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7)]
+        $scope.sizes = [Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7)]
         //$scope.sizes = [15,18,22,23,19,18,17,15,16,19]
         ////console.log($scope.sizes)
         $scope.count= 0;
@@ -46,9 +46,9 @@ angular.module("sudokuApp")
         $scope.message = null;
 
         ///////////////////////////
-        $scope.top = [10,10,10,10,35,35,35,35,60,60,60,60]
-        $scope.left = [3,20,37,54,3,20,37,54,3,20]
-        $scope.countTop = 0
+        $scope.top = [10,10,10,10,35,35,35,35,60,60,60,60,85,85,85,85];
+        $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54,3,20,37];
+        $scope.countTop = 0;
         $scope.countLeft =0;
         $scope.pres = sessionStorage.getItem("KSpresentation");
         ////console.log("presKS= "+$scope.pres);
@@ -59,12 +59,12 @@ angular.module("sudokuApp")
         sessionStorage.setItem("plaster",$rootScope.instance);
         var PuzzleID = $rootScope.instance;
         
-        $scope.pres2ByWeight = [6.9,12 ,11 ,6.5 ,8.5 ,10.5 ,7.5 ,7.8 ,9.7 ,9 ]
+        $scope.pres2ByWeight = [6.9,12 ,11 ,6.5 ,8.5 ,10.5 ,7.5 ,7.8 ,9.7 ,9 ,7.2,7,6.7]
         $scope.pres3ByWeight = [11.5,7 ,10 ,6.5 ,6.7 ,12.2 ,9 ,9.4 ,11 ,10.7 ]
         $scope.pres4ByWeight = [8,9.5 ,6.5 ,11 ,6.5 , 7.5,6.5 ,11 ,12.5 ,9.5 ]
         $scope.pres5ByWeight = [7.4,11.8 ,10 ,7.2 ,7 , 12.5,9.8 ,9.5 ,11.8 ,6.5 ]
 
-        $scope.pres2ByValue = [7.1,10.0 ,12.5 ,6.9 ,8.1 ,9.8 ,6.5 ,8 ,10.5 ,9 ]
+        $scope.pres2ByValue = [7.1,10.0 ,12.5 ,6.9 ,8.1 ,9.8 ,6.5 ,8 ,10.5 ,9 ,10.1,11,7.1]
         $scope.pres3ByValue = [11.5 ,7.4 ,8.9 ,6.5 ,6.9 ,12.5 ,7.6 ,8 ,8.5 ,10.2 ]
         $scope.pres4ByValue = [8 ,10 ,7 ,6.5 ,9 ,10.8 ,7.5 ,10 ,12.5 ,9 ]
         $scope.pres5ByValue = [6.9 ,9.2 ,12.5 ,8.4 ,8.1 ,11 ,8.5 ,9 ,7.2 ,6.5]
@@ -409,6 +409,13 @@ angular.module("sudokuApp")
 
         }
         $scope.coinClicked = function (item) {
+            console.log("clicked")
+            let stringsecond = second;
+            if (second < 10)
+                stringsecond = "0" + second;
+            let stringminute = minute;
+            if (minute < 10)
+                stringminute = "0" + minute;
             //////console.log(item);
             let itemWeight = item[0];
             let itemValue = item[1];
@@ -420,7 +427,10 @@ angular.module("sudokuApp")
             else
                 type = "extract";
             if ((itemWeight + sizeUsed <= bagsize && itemInBag == false) || itemInBag) {//legal move
-
+                console.log("min: "+stringminute)
+                console.log("sec: "+stringsecond)
+                console.log(stringminute + ":" + stringsecond)
+                var timeToDb = stringminute + ":" + stringsecond;
                 $http({
 
                     method: 'POST',
@@ -431,7 +441,7 @@ angular.module("sudokuApp")
                         "itemValue": "" + itemValue,
                         "userID":""+ Uid,
                         "type": "" + type,
-                        "time": (new Date).getHours().toString()+":"+(new Date).getMinutes().toString()+":"+(new Date).getSeconds().toString()
+                        "time": "" + timeToDb
                     }
                 })
                     .then(function (response) {
@@ -771,7 +781,10 @@ angular.module("sudokuApp")
         function generateRandomNumber(min,max) {
 
                 let highlightedNumber = Math.floor(Math.random() * (max - min) + min);
-                return highlightedNumber;
+                if(highlightedNumber== 2 || highlightedNumber== 3)
+                    return 2;
+                else return 5;
+
 
             //alert(highlightedNumber);
         };

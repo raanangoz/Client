@@ -347,13 +347,7 @@ angular.module("sudokuApp")
             sessionStorage.removeItem("minute");
             sessionStorage.removeItem("second");
 
-            var newProb = generateRandomNumber(2,5);
-            ////console.log("whileKSSSS: "+newProb.toString());
-            while (newProb.toString() == sessionStorage.getItem("KSProblem").toString()){
-                ////console.log("whileKSSSS: "+newProb.toString());
-                newProb = generateRandomNumber(2,5);
-            }
-            sessionStorage.setItem("KSProblem",newProb);
+
             endDate = new Date();
             let diff = Math.abs($scope.beginDate-endDate); //game time in ms
             let userAns = "";

@@ -176,6 +176,13 @@ angular.module("sudokuApp")
 
                             });
                         answered = true;
+                        var newProb = generateRandomNumber(2,5);
+                        ////console.log("whileKSSSS: "+newProb.toString());
+                        while (newProb.toString() == sessionStorage.getItem("KSProblem").toString()){
+                            ////console.log("whileKSSSS: "+newProb.toString());
+                            newProb = generateRandomNumber(2,5);
+                        }
+                        sessionStorage.setItem("KSProblem",newProb);
                     }
                     else{
                         $window.alert("Please answer the last question correctly.");
@@ -514,16 +521,17 @@ angular.module("sudokuApp")
                     return "https://i.imgur.com/Sx5L7ZU.png"
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/3fbYPQQ.png"
-                if (weight==35 && value ==30)
-                    return "https://i.imgur.com/9yvt09E.png"
-                if (weight==100 && value ==74)
-                    return "https://i.imgur.com/SbveVWy.png"
-                if (weight==95 && value ==85)
-                    return "https://i.imgur.com/kvgsQzJ.png"
+                if (weight==35 && value ==30) // good
+                    return "https://i.imgur.com/pYUGiDb.png"
+                if (weight==100 && value ==74)// good
+                    return "https://i.imgur.com/3MkOfFy.png"
+                if (weight==95 && value ==85)// good
+                    return "https://i.imgur.com/jSDRcXG.png"
 
 
             }
             else{
+
                 if (weight==50 && value ==37)
                     return "https://i.imgur.com/FX0nbLq.png"
                 if (weight==820 && value ==72)
@@ -608,11 +616,11 @@ angular.module("sudokuApp")
                 if (weight==41 && value ==112)
                     return "https://i.imgur.com/xIHsaff.png"
                 if (weight==35 && value ==30)
-                    return "https://i.imgur.com/pYUGiDb.png"
+                    return "https://i.imgur.com/9yvt09E.png"
                 if (weight==100 && value ==74)
-                    return "https://i.imgur.com/3MkOfFy.png"
+                    return "https://i.imgur.com/SbveVWy.png"
                 if (weight==95 && value ==85)
-                    return "https://i.imgur.com/jSDRcXG.png"
+                    return "https://i.imgur.com/kvgsQzJ.png"
             }
 
         }
@@ -649,10 +657,10 @@ angular.module("sudokuApp")
         function heaviestOfOpt(){
             ////console.log("puzzle is" + puzzle);
             if(puzzle == 2){
-                $scope.heavy1 = 360;
+                $scope.heavy1 = 820;
                 $scope.heavy2 = 435;//correct
-                $scope.heavy3 = 220;
-                $scope.heavy4 = 180;
+                $scope.heavy3 = 700;
+                $scope.heavy4 = 530;
             }
             if(puzzle == 3){
                 $scope.heavy1 = 26;
@@ -670,7 +678,7 @@ angular.module("sudokuApp")
                 $scope.heavy1 = 55;
                 $scope.heavy2 = 41;
                 $scope.heavy3 = 50;
-                $scope.heavy4 = 34;
+                $scope.heavy4 = 55;
             }
 
 
@@ -682,4 +690,16 @@ angular.module("sudokuApp")
             //  4         8       12  , 10, 6
             //  5         41,     50 , 55 , 34
         }
+        function generateRandomNumber(min,max) {
+
+
+            let highlightedNumber = Math.floor(Math.random() * (max - min) + min);
+            if(highlightedNumber== 2 || highlightedNumber== 3) {
+                return 2;
+            }
+            else return 5;
+
+
+            //alert(highlightedNumber);
+        };
     })

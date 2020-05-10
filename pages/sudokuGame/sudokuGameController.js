@@ -77,18 +77,18 @@ angular.module("sudokuApp")
         //load at start
         $scope.move = function(field, sudokuBoard, row, col, val) {
 
-            var change = true;
-            let oldValue = (JSON.parse(sessionStorage.getItem("solutionBoard"))[row][col]);
-
-            if(oldValue != 0 && val != ""  ){
-                console.log("hereChange");
-                change = false;
+            //if 0- has no value
+            let hasValue = (JSON.parse(sessionStorage.getItem("solutionBoard"))[row][col]) != 0;
+            var oldValue = '';
+            if (hasValue) {
+                oldValue = JSON.parse(sessionStorage.getItem("solutionBoard"))[row][col];
             }
             console.log("oldVal= "+oldValue);
-
-            if($scope.sudokuBoard[row][col] != '' && val != "" ){
-                console.log("hereTest");
-            }
+            //
+            // if($scope.sudokuBoard[row][col] != '' ){
+            //     console.log("hereTest");
+            //     hasValue = true;
+            // }
             console.log("row: " + row + ", col : " + col + ", val: " + val);
             var stringsecond = second;
             if (second < 10)
@@ -101,6 +101,7 @@ angular.module("sudokuApp")
 
             var value;
             var legalNum = false;
+            var toInsert = true;
 
             //move of delete
             if(val == "" ){
@@ -114,14 +115,69 @@ angular.module("sudokuApp")
 
                 value = Number(val);
                 console.log("value= "+value);
-                if (value >= 1 && value <= 9 && change) {
+                console.log("has value= "+hasValue);
+                if (value >= 1 && value <= 9) {
                     $scope.sudokuBoard[row][col] = value;
                     legalNum = true;
+                    if(hasValue){
+                        console.log("hereeeeeeeeeeeeeeeeeeeeeeeeee");
+                        //delete the old value
+                        $http({
+
+                            method: 'POST',
+                            url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/move',
+                            data: {
+                                "GameID": "" + GameID,
+                                "stepValueAndCords": "" + row + "" + "" + col + "",
+                                "time": "" + stringminute + ":" + stringsecond + ""
+                            }
+                        })
+                            .then(function (response) {
+
+                                updateSessionBoard(row,col,value);
+                                //insert the new value
+                                $http({
+
+                                    method: 'POST',
+                                    url: 'https://serverdecisionsmaking.herokuapp.com/Sudoku/move',
+                                    data: {
+                                        "GameID": "" + GameID,
+                                        "stepValueAndCords": "" + row + "" + "" + col + "" + "" + value + "",
+                                        "time": "" + stringminute + ":" + stringsecond + ""
+                                    }
+                                })
+                                    .then(function (response) {
+                                        updateSessionBoard(row,col,value);
+                                        //add to the board 2d array
+
+                                    }, function (response) {
+                                        // $scope.records = response.statusText;
+                                    });
+
+
+                            }, function (response) {
+                                // $scope.records = response.statusText;
+                            });
+
+
+
+
+                        toInsert = false;
+
+
+                    }
+
+                } else if(hasValue) {
+                    $scope.sudokuBoard[row][col] = oldValue;
+
+                //if insert an illegal value and there was no a value before
+                } else {
+                    $scope.sudokuBoard[row][col] = '';
                 }
             }
 
 
-            if( value === "" || legalNum){
+            if( (value === "" || legalNum) && toInsert){
 
                 console.log("valueInIf= "+value);
                 console.log("legalNumInIf= "+legalNum);
@@ -211,7 +267,7 @@ angular.module("sudokuApp")
             console.log("hereTimer");
 
             second = sessionStorage.getItem("second") || 1;
-            minute = sessionStorage.getItem("minute") || 2;  //TODO CHANGE TO 15
+            minute = sessionStorage.getItem("minute") || 15;  //TODO CHANGE TO 15
 
             //init an interval of countdown
             interval= $interval(function() {
@@ -277,7 +333,7 @@ angular.module("sudokuApp")
             //     minute = sessionStorage.getItem("minute");
             // }
             second = sessionStorage.getItem("second") || 1;
-            minute = sessionStorage.getItem("minute") || 2; //TODO CHANGE TO 15
+            minute = sessionStorage.getItem("minute") || 15; //TODO CHANGE TO 15
 
 
             console.log("secondInit= "+second);
@@ -735,7 +791,7 @@ angular.module("sudokuApp")
             }
 
             var totalSeconds = 60- intsecond;
-            var totalMinutes = 1- intminute;   //TODO CHANGE TO 14
+            var totalMinutes = 14- intminute;   //TODO CHANGE TO 14
 
             var totalTime = totalMinutes + ":"+ totalSeconds;
             console.log("totalTime= "+totalTime);

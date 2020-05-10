@@ -265,7 +265,7 @@ angular.module("sudokuApp")
             $scope.gameStarted = true;
 
             second = sessionStorage.getItem("second") || 1;
-            minute = sessionStorage.getItem("minute") || 2;  //TODO CHANGE TO 15
+            minute = sessionStorage.getItem("minute") || 15;  //TODO CHANGE TO 15
 
             //init an interval of countdown
             interval= $interval(function() {
@@ -330,7 +330,7 @@ angular.module("sudokuApp")
             //     minute = sessionStorage.getItem("minute");
             // }
             second = sessionStorage.getItem("second") || 1;
-            minute = sessionStorage.getItem("minute") || 2; //TODO CHANGE TO 15
+            minute = sessionStorage.getItem("minute") || 15; //TODO CHANGE TO 15
 
 
             // console.log("secondInit= "+second);
@@ -788,7 +788,7 @@ angular.module("sudokuApp")
             }
 
             var totalSeconds = 60- intsecond;
-            var totalMinutes = 1- intminute;   //TODO CHANGE TO 14
+            var totalMinutes = 14- intminute;   //TODO CHANGE TO 14
 
             var totalTime = totalMinutes + ":"+ totalSeconds;
             console.log("totalTime= "+totalTime);

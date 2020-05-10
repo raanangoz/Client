@@ -144,7 +144,7 @@ angular.module("sudokuApp")
             $scope.gameStarted = true;
 
             second = sessionStorage.getItem("second") || 1;
-            minute = sessionStorage.getItem("minute") || 2;  //TODO CHANGE TO 4
+            minute = sessionStorage.getItem("minute") || 4;  //TODO CHANGE TO 4
 
             //init an interval of countdown
             interval= $interval(function() {
@@ -193,7 +193,7 @@ angular.module("sudokuApp")
         $scope.init = function(){
 
             second = sessionStorage.getItem("second") || 1;
-            minute = sessionStorage.getItem("minute") || 2; //TODO CHANGE TO 4
+            minute = sessionStorage.getItem("minute") || 4; //TODO CHANGE TO 4
 
             ////console.log("inittttttttttttt");
             $scope.beginDate = new Date()

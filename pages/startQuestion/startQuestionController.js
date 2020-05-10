@@ -119,7 +119,7 @@ angular.module("sudokuApp")
                                         $rootScope.userID = userID;
                                         sessionStorage.setItem("userID",userID);
                                         $rootScope.gameInstance = Math.floor(Math.random() * 4);
-                                        sessionStorage.setItem("KSProblem",generateRandomNumber(2,5).toString());//TODO
+                                        sessionStorage.setItem("KSProblem",generateRandomNumber(2,5).toString());
                                         // $rootScope.gameInstance = 2;
 
                                         //everyone presentation

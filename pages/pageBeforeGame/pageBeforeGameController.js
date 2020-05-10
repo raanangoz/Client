@@ -14,8 +14,8 @@ angular.module("sudokuApp")
         });
 
         $rootScope.gameInstance = JSON.parse(sessionStorage.getItem("gameInstance"));
-        console.log("gameinstance isssssss");
-        console.log($rootScope.gameInstance);
+        ////console.log("gameinstance isssssss");
+        ////console.log($rootScope.gameInstance);
 
         //if numbers
         if($rootScope.gameInstance == 0){

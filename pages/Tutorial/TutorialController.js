@@ -18,32 +18,32 @@ angular.module("sudokuApp")
 
         $rootScope.gameInstance=JSON.parse(sessionStorage.getItem("gameInstance"));
         $rootScope.wasSudoko = JSON.parse(sessionStorage.getItem("wasSudoko"));
-        console.log("wasSudokuuuuu= "+$rootScope.wasSudoko);
+        //console.log("wasSudokuuuuu= "+$rootScope.wasSudoko);
 
         $scope.init = function () {
 
             familiarityAgainNextSudoku = false;
             familiarityAgainPrevSudoku = false;
             //if numbers
-            console.log("wassudoko)");
-            console.log($rootScope.gameInstance);
+            //console.log("wassudoko)");
+            //console.log($rootScope.gameInstance);
             if($rootScope.gameInstance == 0){
-                console.log("its 0");
+                //console.log("its 0");
                 $scope.numbers = true;
                 $scope.colors= false;
                 // $rootScope.wasSudoko++;
                 // sessionStorage.setItem("wasSudoko","true");
-                console.log(sessionStorage.getItem("wasSudoko"));
+                //console.log(sessionStorage.getItem("wasSudoko"));
             }
 
             //if colors
             if($rootScope.gameInstance == 1){
-                console.log("its 1");
+                //console.log("its 1");
                 $scope.numbers = false;
                 $scope.colors= true;
                 // $rootScope.wasSudoko++;
                 // sessionStorage.setItem("wasSudoko","true");
-                console.log(sessionStorage.getItem("wasSudoko"));
+                //console.log(sessionStorage.getItem("wasSudoko"));
             }
 
             if($rootScope.gameInstance === 2 || $rootScope.gameInstance === 3 ){
@@ -51,7 +51,7 @@ angular.module("sudokuApp")
                 $scope.colors= false;
                 $scope.ks= true;
                 // $rootScope.wasKS++;
-                // sessionStorage.setItem("wasKS","true");
+                //sessionStorage.setItem("wasKS","true");
 
             }
 
@@ -125,7 +125,7 @@ angular.module("sudokuApp")
             }
 
             if(($rootScope.gameInstance == 1 || $rootScope.gameInstance ==0) && slideIndex === x.length-2 && sessionStorage.getItem("wasSudoko") === 'true'){
-                console.log("hereIFNowwwwwwww");
+                //console.log("hereIFNowwwwwwww");
                 document.getElementById("next").innerHTML = "Continue";
             }
 
@@ -149,10 +149,9 @@ angular.module("sudokuApp")
             }else{
 
                 if( ($rootScope.gameInstance == 1 || $rootScope.gameInstance ==0) &&  slideIndex === x.length-1 && !familiarityAgainNextSudoku ){
-                    console.log("hereIFFFF");
+                    //console.log("hereIFFFF");
                     //if it's the second instance of the sudoku
                     if(sessionStorage.getItem("wasSudoko") === 'true'){
-                        console.log("hereWASsSSS")
                         next();
 
 
@@ -187,7 +186,7 @@ angular.module("sudokuApp")
 
         $scope.$watch('familiar', function(value) {
 
-            console.log("familiarity= "+value);
+            //console.log("familiarity= "+value);
             document.getElementById("next").style.visibility = "visible";
             if (value !== undefined){
                 document.getElementById("next").innerHTML = "Submit and continue";

@@ -19,7 +19,7 @@ angular.module("sudokuApp")
         $scope.correctnessPercents = [];
 
         $rootScope.gameInstancesChosen=(JSON.parse(sessionStorage.getItem("gameInstancesChosen")));
-        console.log("works?)");
+        ////console.log("works?)");
         $rootScope.gameInstance = JSON.parse(sessionStorage.getItem("gameInstance"));
         $rootScope.boxes = JSON.parse(sessionStorage.getItem("boxes"));
         $rootScope.GameID = JSON.parse(sessionStorage.getItem("GameID"));
@@ -51,7 +51,7 @@ angular.module("sudokuApp")
         }
 
 
-        console.log("gameInstances[3]= "+$rootScope.gameInstancesChosen[3]);
+        ////console.log("gameInstances[3]= "+$rootScope.gameInstancesChosen[3]);
 
         $scope.init = function(){
             if ($scope.sudokuQuestion == true) {
@@ -59,16 +59,16 @@ angular.module("sudokuApp")
                     $scope.arrayOfOptionNumbers[i] = i;
                 }
                 // $scope.arrayOfOptionNumbers =  [...Array($rootScope.boxes+1).keys()];// create  array with numbers between 0 to x!!
-                console.log("numOfBoxes= " + $rootScope.boxes);
+                ////console.log("numOfBoxes= " + $rootScope.boxes);
                 // for (var i = 0; i <$scope.arrayOfOptionNumbers.length ; i++) {
                 //     $scope.arrayOfOptionNumbers[i]= i;
                 //
                 // }
                 for (var i = 0; i < $scope.arrayOfOptionNumbers.length; i++) {
-                    console.log("valArray= " + $scope.arrayOfOptionNumbers[i]);
+                    ////console.log("valArray= " + $scope.arrayOfOptionNumbers[i]);
 
                 }
-                console.log("arrrrray= " + $scope.arrayOfOptionNumbers);
+                ////console.log("arrrrray= " + $scope.arrayOfOptionNumbers);
             }
             else {//knapsack
                 for (let i = 1; i <= 100; i++) {
@@ -80,7 +80,7 @@ angular.module("sudokuApp")
             //update was
             if($rootScope.gameInstance === 0 || $rootScope.gameInstance === 1 ){
 
-                console.log("hereFinishSudoku123");
+                ////console.log("hereFinishSudoku123");
                 sessionStorage.setItem("wasSudoko","true");
 
 
@@ -106,8 +106,8 @@ angular.module("sudokuApp")
                 correctnessRank = rankCorrectness.value;
                 difficultyRank = rankDifficulty.value;
 
-                console.log("correct= "+correctnessRank);
-                console.log("diffi= "+difficultyRank);
+                ////console.log("correct= "+correctnessRank);
+                ////console.log("diffi= "+difficultyRank);
 
                 //if the user filled the two fields
                 if(correctnessRank <=$rootScope.boxes && correctnessRank >=0 && difficultyRank <=10 && difficultyRank >=1){
@@ -192,21 +192,21 @@ angular.module("sudokuApp")
                 //check if the whole games completed
 
                 for (var i = 0; i < $rootScope.gameInstancesChosen.length; i++) {
-                    console.log($rootScope.gameInstancesChosen[i]);
+                    ////console.log($rootScope.gameInstancesChosen[i]);
                     if ($rootScope.gameInstancesChosen[i] == false) {
                         completed = false;
                     }
 
                 }
 
-                console.log("completed= "+completed);
+                ////console.log("completed= "+completed);
                 if (!completed){
 
                     //change to *4 after the KS page
                     $rootScope.gameInstance = Math.floor(Math.random() * 4);
 
                     while ($rootScope.gameInstancesChosen[ $rootScope.gameInstance] == true){
-                        console.log("hereWhileFinish");
+                        ////console.log("hereWhileFinish");
                         $rootScope.gameInstance = Math.floor(Math.random() * 4);
                     }
 
@@ -216,7 +216,7 @@ angular.module("sudokuApp")
 
                     if($rootScope.gameInstance=='3'){
 
-                        console.log("here333333");
+                        ////console.log("here333333");
 
                         //0-weight presentation, 1-value presentation, 2-mix presentation
                         $rootScope.KSpresentation = Math.floor(Math.random() * 3);
@@ -238,11 +238,11 @@ angular.module("sudokuApp")
                                 .then(function(response) {
                                     var place = "p"+KSpresentation;
                                     console.dir("response= "+response.data[0][place]);
-                                    console.log("response= "+ JSON.stringify(response.data[0][place]));
+                                    ////console.log("response= "+ JSON.stringify(response.data[0][place]));
                                     counterPresentation = response.data[0][place];
                                     countersArray[KSpresentation]= response.data[0][place];
-                                    console.log("counterPresentation= "+counterPresentation);
-                                    console.log("countersArray[0] = "+countersArray[KSpresentation]);
+                                    ////console.log("counterPresentation= "+counterPresentation);
+                                    ////console.log("countersArray[0] = "+countersArray[KSpresentation]);
                                     if(KSpresentation === 2){
                                         checkCounter();
                                     }
@@ -258,7 +258,7 @@ angular.module("sudokuApp")
 
                         function checkCounter(){
                             // for (var i = 0; i <countersArray.length ; i++) {
-                            //     console.log("cell1:"+countersArray[i]);
+                            ////     //console.log("cell1:"+countersArray[i]);
                             //
                             // }
 
@@ -267,7 +267,7 @@ angular.module("sudokuApp")
 
                             for (var i = 0; i <countersArray.length  ; i++) {
                                 if(countersArray[i] != 0){
-                                    console.log("hereAllZero");
+                                    ////console.log("hereAllZero");
                                     allZero = false;
                                 }
 
@@ -278,7 +278,7 @@ angular.module("sudokuApp")
                             }else{
 
                                 while(countersArray[$rootScope.KSpresentation] === 0){
-                                    console.log("herePres"+ countersArray[$rootScope.KSpresentation]);
+                                    ////console.log("herePres"+ countersArray[$rootScope.KSpresentation]);
                                     $rootScope.KSpresentation = Math.floor(Math.random() * 3);
                                 }
 
@@ -296,10 +296,10 @@ angular.module("sudokuApp")
 
                         // while(counterPresentation === 0){
                         //
-                        //     console.log("hereWhilecounterPresentation === 0")
+                        ////     //console.log("hereWhilecounterPresentation === 0")
                         //
-                        //     console.log("KSpresentation= "+$rootScope.KSpresentation);
-                        //     console.log('http://localhost:3000/Knapsack/getPresentationCounter/'+$rootScope.KSpresentation);
+                        ////     //console.log("KSpresentation= "+$rootScope.KSpresentation);
+                        ////     //console.log('http://localhost:3000/Knapsack/getPresentationCounter/'+$rootScope.KSpresentation);
                         //
                         //
                         //
@@ -341,16 +341,16 @@ angular.module("sudokuApp")
 
                         // sessionStorage.setItem("KSProblem",Math.floor(Math.random() * 4) + 2);
                         sessionStorage.setItem("KSpresentation", ""+$rootScope.KSpresentation);
-                        console.log("KSpresentationStart= "+sessionStorage.getItem("KSpresentation"));
+                        ////console.log("KSpresentationStart= "+sessionStorage.getItem("KSpresentation"));
 
                         if($rootScope.gameInstancesChosen[ $rootScope.gameInstance] == false){
-                            console.log("number= "+$rootScope.gameInstance);
+                            ////console.log("number= "+$rootScope.gameInstance);
                             $rootScope.gameInstancesChosen[$rootScope.gameInstance]= true;
                             sessionStorage.setItem("gameInstance",$rootScope.gameInstance);
                             sessionStorage.setItem("gameInstancesChosen",JSON.stringify($rootScope.gameInstancesChosen));
 
-                            console.log("gameInstanceFinish= "+sessionStorage.getItem("gameInstance"));
-                            console.log("wasKSfinish= "+sessionStorage.getItem("wasKS"));
+                            ////console.log("gameInstanceFinish= "+sessionStorage.getItem("gameInstance"));
+                            ////console.log("wasKSfinish= "+sessionStorage.getItem("wasKS"));
 
                             if((sessionStorage.getItem("gameInstance")==2 || sessionStorage.getItem("gameInstance")==3)
                                 && sessionStorage.getItem("wasKS") ==='true'){
@@ -368,7 +368,7 @@ angular.module("sudokuApp")
 
                 } else {
 
-                    console.log("hereOver123456");
+                    ////console.log("hereOver123456");
                     //experiment over
                     $location.url('/Feedback');
                 }
@@ -390,7 +390,7 @@ angular.module("sudokuApp")
             op4 = document.getElementById("op4").value;
             $scope.totalV = Number(op1)+Number(op2)+Number(op3)+Number(op4);
             sumTo100 =  $scope.totalV;
-            console.log(sumTo100);
+            ////console.log(sumTo100);
         }
 
 
@@ -400,8 +400,8 @@ angular.module("sudokuApp")
             $scope.presen = sessionStorage.getItem("KSpresentation");
             $scope.itemsForPres = JSON.parse(sessionStorage.getItem("items"));
 
-            console.log("presKS= "+$scope.presen);
-            console.log($scope.itemsForPres);
+            ////console.log("presKS= "+$scope.presen);
+            ////console.log($scope.itemsForPres);
             $scope.top = [10,10,10,10,150,150,150,150,290,290,290,290]
             $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54]
             $scope.countTopPres = 0
@@ -425,11 +425,11 @@ angular.module("sudokuApp")
         var sizes = [Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7)]
 
         $scope.drawCoins = function (isChosen, weight,value) {
-            // console.log("isChosen-"+isChosen)
-            // console.log("weight-"+weight)
-            // console.log("value-"+value)
-            //console.log($scope.items);
-            console.log("#@$@#")
+            //// //console.log("isChosen-"+isChosen)
+            //// //console.log("weight-"+weight)
+            //// //console.log("value-"+value)
+            //////console.log($scope.items);
+            ////console.log("#@$@#")
             if (!isChosen) {
                 if (weight==50 && value ==37)
                     return "https://i.imgur.com/HBJTrNN.png"
@@ -615,11 +615,11 @@ angular.module("sudokuApp")
                 $scope.countLeftPres=0;
             }
             //value presentation
-            console.log("countLeft: "+$scope.countLeftPres)
-            console.log("countTop: "+$scope.countTopPres)
-            console.log("top: "+$scope.top[$scope.countTopPres])
-            console.log("left: "+$scope.left[$scope.countLeftPres])
-            //console.log("byValue: "+$scope.byValue)
+            ////console.log("countLeft: "+$scope.countLeftPres)
+            ////console.log("countTop: "+$scope.countTopPres)
+            ////console.log("top: "+$scope.top[$scope.countTopPres])
+            ////console.log("left: "+$scope.left[$scope.countLeftPres])
+            //////console.log("byValue: "+$scope.byValue)
             myObj = {
                 //"cursor": "pointer",
                 "width": "15%",
@@ -636,7 +636,7 @@ angular.module("sudokuApp")
         }
 
         function heaviestOfOpt(){
-            console.log("puzzle is" + puzzle);
+            ////console.log("puzzle is" + puzzle);
             if(puzzle == 2){
                 $scope.heavy1 = 360;
                 $scope.heavy2 = 435;//correct

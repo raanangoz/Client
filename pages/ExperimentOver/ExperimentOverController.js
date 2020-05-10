@@ -28,7 +28,7 @@ angular.module("sudokuApp")
 
                 }
 
-                    console.log("compCode= "+$scope.code);
+
 
                     //documentation
                     $http({

@@ -280,8 +280,13 @@ angular.module("sudokuApp")
 
 
             setTimeout(function() {
-                ////console.log("hereTIMEOUT");
-                $('#myModalKS').modal();
+                console.log("hereTIMEOUT");
+                if(sessionStorage.getItem("second")== null){
+                    $('#myModalKS').modal();
+                }else{
+                    $scope.timer();
+                }
+
             }, 2000);
 
         }

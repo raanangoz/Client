@@ -208,18 +208,10 @@ angular.module("sudokuApp")
         $scope.timer = function (){
 
             $scope.gameStarted = true;
-            //document.getElementById("finish").disabled = "false";
             console.log("hereTimer");
 
-            // let second = 1000;
-            // let minute = 1000 * 60;
-            // let countDown = new Date();
             second = sessionStorage.getItem("second") || 1;
             minute = sessionStorage.getItem("minute") || 2;  //TODO CHANGE TO 15
-            //define the time + 15 minutes
-            // countDown.setMinutes ( countDown.getMinutes() + 1 );  //15
-            // let now = new Date().getTime();
-            // let distance = 0;
 
             //init an interval of countdown
             interval= $interval(function() {
@@ -239,61 +231,12 @@ angular.module("sudokuApp")
                     $interval.cancel(interval);
                     document.getElementById("status").innerHTML = "Game Over";
                     $window.alert("Game Over");
-                    // console.log("secondIntervalCncel= "+second);
-                    // console.log("minuteIntervalCncel= "+minute);
                     $scope.finishGame();
                     $location.url('/finishQuestion');
                 }
 
-
-                // console.log("intervalS= "+second);
-                // console.log("intervalM= "+minute);
-                // let now = new Date().getTime();
-                // let distance= countDown - now;
-                // if(sessionStorage.getItem("distance") != null){
-                //     distance = sessionStorage.getItem("distance");
-                // }else{
-                //     distance= countDown - now;
-                // }
-                // // let distance = countDown - now;
-                // if(fromSession){
-                //     distance = sessionStorage.getItem("distance");
-                //     countDown = now + distance;
-                //     sessionStorage.setItem("distance", null);
-                //     fromSession = false;
-                // }
-                // console.log("distance= "+distance);
-                // if(sessionStorage.getItem("distance") == null){
-                //     distance = countDown - now;
-                // }else{
-                //     distance = sessionStorage.getItem("distance");
-                // }
-                // sessionStorage.setItem("distance", distance);
-
-                // if(sessionStorage.getItem("minute") != 1000){
-                //     minute = sessionStorage.getItem("minute");
-                // }else{
-                //     minute =  Math.floor((distance % (60 *60 *1000)) / (60*1000));
-                // }
-                //
-                // if(sessionStorage.getItem("second") != 1000 * 60){
-                //     minute = sessionStorage.getItem("minute");
-                // }else{
-                //     minute =  Math.floor((distance % (60 *1000)) / 1000);
-                // }
-
-                // minute = sessionStorage.getItem("minute");
-                // minute = Math.floor((distance % (60 *60 *1000)) / (60*1000));
-                // sessionStorage.setItem("minute", minute);
-                //
-                // // second = sessionStorage.getItem("second");
-                // second = Math.floor((distance % (60 *1000)) / 1000);
-                // sessionStorage.setItem("second", second);
-
                 var length = $location.absUrl().length;
                 var gameLocation = $location.absUrl().substring(length-4,length);
-                // console.log("length= "+length);
-                // console.log("yes: "+$location.absUrl().substring(length-4,length));
 
                 if(gameLocation != "Game"){
                     clearInterval(interval);
@@ -307,31 +250,8 @@ angular.module("sudokuApp")
                         + minute + "m " + second + "s ";
                 }
 
-                //game over
-                // if (distance <=  0) {
-                // second= 0;
-                // minute = 0;
-                // $interval.cancel(interval);
-                // document.getElementById("status").innerHTML = "Game Over";
-                // $window.alert("Game Over");
-                // console.log("secondIntervalCncel= "+second);
-                // console.log("minuteIntervalCncel= "+minute);
-                // $scope.finishGame();
-                // $location.url('/finishQuestion');
-                // }
 
             }, 1000)
-
-            //show "game over" after 15 minutes
-            // $timeout(function() {
-            //     document.getElementById("status").innerHTML = "Game Over";
-            //     alert("Game Over");
-            //     clearInterval(interval);
-            //     console.log("hereTimeOut101010");
-            //     $location.url('/finishQuestion');
-            //
-            // },8000);   //900000
-
 
 
         };

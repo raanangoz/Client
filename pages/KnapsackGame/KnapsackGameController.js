@@ -27,8 +27,8 @@ angular.module("sudokuApp")
         var objNum=0;
         var presentation = 2;
         var interval;
-        let second = 1000;
-        let minute = 1000 * 60;
+        var second;
+        var minute;
         let a = Math.floor(Math.random()* (5)+7)
         $scope.sizes = [Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7),Math.floor(Math.random()* (5)+7)]
         //$scope.sizes = [15,18,22,23,19,18,17,15,16,19]
@@ -110,7 +110,6 @@ angular.module("sudokuApp")
 
         $scope.move = function(field, sudokuBoard, row, col, val) {
 
-
             let stringsecond = second;
             if (second < 10)
                 stringsecond = "0" + second;
@@ -142,29 +141,35 @@ angular.module("sudokuApp")
         $scope.timer = function (){
 
             $scope.gameStarted = true;
-            //document.getElementById("finish").disabled = "false";
-            ////console.log("hereTimer");
+            console.log("hereTimer");
 
-            // let second = 1000;
-            // let minute = 1000 * 60;
-            let countDown = new Date();
-
-            //define the time + 15 minutes
-            countDown.setMinutes ( countDown.getMinutes() + 1 );  //TODO CHANGE TO 4
+            second = sessionStorage.getItem("second") || 1;
+            minute = sessionStorage.getItem("minute") || 2;  //TODO CHANGE TO 4
 
             //init an interval of countdown
             interval= $interval(function() {
+                second = second - 1;
+                if(second <= -1) {
+                    minute = minute - 1;
+                    second = 59;
+                }
 
-                let now = new Date().getTime();
-                let distance = countDown - now;
+                sessionStorage.setItem("minute", minute);
+                sessionStorage.setItem("second", second);
 
-                minute = Math.floor((distance % (60 *60 *1000)) / (60*1000));
-                second = Math.floor((distance % (60 *1000)) / 1000);
+                if(minute <= -1) {
+                    //finish game
+                    second= 0;
+                    minute = 0;
+                    $interval.cancel(interval);
+                    document.getElementById("statusKS").innerHTML = "Game Over";
+                    $window.alert("Game Over");
+                    $scope.finishGame();
+                    $location.url('/finishQuestion');
+                }
 
                 var length = $location.absUrl().length;
                 var gameLocation = $location.absUrl().substring(length-4,length);
-                //// //console.log("length= "+length);
-                //// //console.log("yes: "+$location.absUrl().substring(length-4,length));
 
                 if(gameLocation != "Game"){
                     clearInterval(interval);
@@ -173,39 +178,24 @@ angular.module("sudokuApp")
 
                 if(document.getElementById("statusKS") != null){
 
-                    ////console.log("hereInnerrrr");
+                    console.log("hereInnerrrr");
                     document.getElementById("statusKS").innerHTML = "Time Left: "
                         + minute + "m " + second + "s ";
                 }
 
-                //game over
-                if (distance < 0) {
-                    $interval.cancel(interval);
-                    document.getElementById("statusKS").innerHTML = "Game Over";
-                    $window.alert("Game Over");
-                    $scope.finishGame();
-                    $location.url('/finishQuestion');
-                }
 
             }, 1000)
-
-            //show "game over" after 15 minutes
-            // $timeout(function() {
-            //     document.getElementById("status").innerHTML = "Game Over";
-            //     alert("Game Over");
-            //     clearInterval(interval);
-            ////     //console.log("hereTimeOut101010");
-            //     $location.url('/finishQuestion');
-            //
-            // },8000);   //900000
-
 
 
         };
 
 
-//init board and game
+        //init board and game
         $scope.init = function(){
+
+            second = sessionStorage.getItem("second") || 1;
+            minute = sessionStorage.getItem("minute") || 2; //TODO CHANGE TO 4
+
             ////console.log("inittttttttttttt");
             $scope.beginDate = new Date()
 
@@ -349,6 +339,8 @@ angular.module("sudokuApp")
         $scope.finishGame = function(){
 
             $interval.cancel(interval);
+            sessionStorage.removeItem("minute");
+            sessionStorage.removeItem("second");
 
             var newProb = generateRandomNumber(2,5);
             ////console.log("whileKSSSS: "+newProb.toString());

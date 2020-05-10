@@ -409,8 +409,8 @@ angular.module("sudokuApp")
 
             ////console.log("presKS= "+$scope.presen);
             ////console.log($scope.itemsForPres);
-            $scope.top = [10,10,10,10,150,150,150,150,290,290,290,290]
-            $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54]
+            $scope.top = [10,10,10,10,150,150,150,150,290,290,290,290,430]
+            $scope.left = [3,20,37,54,3,20,37,54,3,20,37,54,3]
             $scope.countTopPres = 0
             $scope.countLeftPres =0;
             $scope.count= 0;

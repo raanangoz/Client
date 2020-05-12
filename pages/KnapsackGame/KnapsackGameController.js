@@ -452,8 +452,12 @@ angular.module("sudokuApp")
                     });
             }
             else{
-                //TODO
-                window.alert("impossible move, not enough space in the bag");
+
+                // window.alert("impossible move, not enough space in the bag");
+                setTimeout(function() {
+                    $('#myModal3KS').modal();
+                }, 500);
+
             }
 
         }

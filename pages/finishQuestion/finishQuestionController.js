@@ -401,12 +401,12 @@ angular.module("sudokuApp")
         }
 
 
-        $scope.openModal = function(){
-
-            $('#myModalF').modal();
+        // $scope.openModal = function(){
+        //
+        //     $('#myModalF').modal();
+        if ($scope.knapsackquestions){
             $scope.presen = sessionStorage.getItem("KSpresentation");
             $scope.itemsForPres = JSON.parse(sessionStorage.getItem("items"));
-
 
             ////console.log("presKS= "+$scope.presen);
             ////console.log($scope.itemsForPres);
@@ -645,10 +645,13 @@ angular.module("sudokuApp")
             //////console.log("byValue: "+$scope.byValue)
             myObj = {
                 //"cursor": "pointer",
-                "width": "15%",
-                "position": "absolute",
-                "top": $scope.top[$scope.countTopPres]+"%",
-                "left": $scope.left[$scope.countLeftPres]+"%"
+                // "width": "15%",
+            //     "display": "flex",
+            // "flex-direction": "column",
+            // "flex-wrap": "nowrap"
+            //     "position": "absolute",
+            //     "top": $scope.top[$scope.countTopPres]+"%",
+            //     "left": $scope.left[$scope.countLeftPres]+"%"
                 // "top": "10%",
                 // "left": "10%"
 

@@ -8,10 +8,18 @@ angular.module("sudokuApp")
 
         $scope.continue = function () {
 
+            if(!($scope.termsCheckBox)){
+                $window.alert("You have to agree the conditions of the experiment first");
+
+            }else{
+                $location.url('/startQuestion');
+            }
+
+
             // window.open("http://http://localhost:63342/Sudoku/index.html?_ijt=p6sksmnjl0rbnb3hqiohvcg5qd#!/startQuestion", "_self", "toolbar=no");
 
             // window.onpopstate = function (e) { window.history.forward(1); }
-            $location.url('/startQuestion');
+            // $location.url('/startQuestion');
 
             }
 

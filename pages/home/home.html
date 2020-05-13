@@ -28,6 +28,7 @@
                 <p>Throughout the experiment, we may collect data such as browser type, operating system version,</p>
                 <p>mouse movements, and error rates.</p>
                 <p>The records of this study will be kept private.</p>
+                <p>Please note that this experiment is not appointed for color blind.</p>
                 <p>In any sort of report, we make public, we will not include any information </p>
                 <p>that will make it possible to identify you without your explicit consent.</p>
                 <p><b>PARTICIPATION AND WITHDRAWAL:</b> Your participation in this study is voluntary, </p>
@@ -36,10 +37,12 @@
                 <p><b>CONTACT:</b> This study is conducted by researchers at Ben-Gurion University. </p>
                 <p>If you have any questions or concerns about this study, please contact hilla.shinitzky@gmail.com</p>
                 <br><br>
+                <input type="checkbox" ng-model= "termsCheckBox">
+
                 <b>Consent:</b> I have read the above information and the nature and purpose of this research have been sufficiently explained.
                 I consent to take part in the study. I understand that I am free to withdraw at any time.
 
-                <input type="checkbox" ng-model="termsCheckBox">
+<!--                <input type="checkbox" ng-model="termsCheckBox">-->
 
 
             </div>
@@ -47,11 +50,11 @@
             <br>
 
             <div class="footer">
-                <button  class="continueButton" ng-disabled="!termsCheckBox" ng-click=" continue()" >Continue</button>
+                <button  class="continueButton" ng-click=" continue()" >Continue</button>
             </div>
 
 
-
+<!--            ng-disabled="!termsCheckBox"-->
 
         </div>
 

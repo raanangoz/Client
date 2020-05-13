@@ -148,7 +148,7 @@ angular.module("sudokuApp")
                 if (confident <= 10 && confident >= 1 && difficultyRank <= 10 && difficultyRank >= 1 &&
                     people>=1 && people <=10 && fat>=1 ) {
                     if (sumTo100 == 100) {
-                        document.getElementById("nextTask").disabled = false;
+                        document.getElementById("nextTaskKS").disabled = false;
 
 
                         $http({

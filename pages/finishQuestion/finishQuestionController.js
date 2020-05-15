@@ -18,7 +18,7 @@ angular.module("sudokuApp")
             .then(function(response) {
                     $rootScope.countInstance2 = response.data[0].regularPresCounter;
                     //var countInstance5 = response.data[1][0];
-                    console.log("countInstance2~!~!!~!~!~!~!~~"+countInstance2)
+                    console.log("countInstance2~!~!!~!~!~!~!~~"+$rootScope.countInstance2)
                     //console.log("countInstance5~!~!~!~!~!~!~!~!"+countInstance5)
 
                 },
@@ -237,6 +237,7 @@ angular.module("sudokuApp")
                             newProb = generateRandomNumber(2,5);
                         }
                         sessionStorage.setItem("KSProblem",newProb);
+                        console.log(newProb + " newprob ");
                     }
                     else{
                         $window.alert("Invalid answer found. \nYour answers sum up to " +$scope.totalV +" instead of 100");
@@ -273,7 +274,8 @@ angular.module("sudokuApp")
 
 
 
-                    if($rootScope.gameInstance=='2'){
+                    if($rootScope.gameInstance=='2' && sessionStorage.getItem("startWithKS")=="false"){
+                        sessionStorage.setItem("startWithKS","true")
                         $http ({
                             method: 'GET',
                             url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'
@@ -304,7 +306,7 @@ angular.module("sudokuApp")
                         if ($rootScope.countInstance2 >= $rootScope.countInstance5){
                             sessionStorage.setItem("KSProblem",two.toString);
                             console.log("countInstance2 ="+$rootScope.countInstance2)
-                            console.log("countInstance2 ="+$rootScope.countInstance5)
+                            console.log("countInstance5 ="+$rootScope.countInstance5)
                             $rootScope.countInstance2 = $rootScope.countInstance2 -1;
                             $http({
 
@@ -383,12 +385,13 @@ angular.module("sudokuApp")
 
                         //0-weight presentation, 1-value presentation, 2-mix presentation
                         $rootScope.KSpresentation = Math.floor(Math.random() * 3);
-
+                        if (sessionStorage.getItem("startWithKS")=="false"){
+                            sessionStorage.setItem("startWithKS","true")
                         if ($rootScope.countInstance2 >= $rootScope.countInstance5){
                             $rootScope.countInstance2 = $rootScope.countInstance2 -1;
                             sessionStorage.setItem("KSProblem",two.toString());
                             console.log("countInstance2 ="+$rootScope.countInstance2)
-                            console.log("countInstance2 ="+$rootScope.countInstance5)
+                            console.log("countInstance5 ="+$rootScope.countInstance5)
                             $http({
 
                                 method: 'POST',
@@ -428,7 +431,7 @@ angular.module("sudokuApp")
                                 }, function (response) {
                                     // $scope.records = response.statusText;
                                 });
-                        }
+                        }}
 
                         var counterPresentation= 0;
                         updateCounter(0);

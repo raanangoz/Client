@@ -11,8 +11,10 @@ angular.module("sudokuApp")
             //this would work only if the user chooses not to leave the page
             return 'why would you do that???';
         }
-        $rootScope.countInstance2 = -1;
-        $rootScope.countInstance5 = -1;
+        // $rootScope.countInstance2 = -1;
+        // $rootScope.countInstance5 = -1;
+
+        sessionStorage.setItem("startWithKS","false");
 
 
         const five = 5;
@@ -24,7 +26,9 @@ angular.module("sudokuApp")
         })
             .then(function(response) {
                     $rootScope.countInstance2 = response.data[0].regularPresCounter;
-                    //var countInstance5 = response.data[1][0];
+                    $rootScope.countInstance5 = response.data[1].regularPresCounter;
+                    console.log(response.data[0].regularPresCounter)
+                    console.log(response.data[1].regularPresCounter)
                     console.log("countInstance2~!~!!~!~!~!~!~~"+$rootScope.countInstance2)
                     //console.log("countInstance5~!~!~!~!~!~!~!~!"+countInstance5)
 
@@ -161,6 +165,7 @@ angular.module("sudokuApp")
 
                                         // standart presentation
                                         if($rootScope.gameInstance=='2'){
+                                            sessionStorage.setItem("startWithKS","true");
                                             $http ({
                                                 method: 'GET',
                                                 url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'
@@ -187,14 +192,14 @@ angular.module("sudokuApp")
                                                         // $scope.records = response.statusText;
                                                     });
                                             console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance5)
-                                            console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance2)
+                                            console.log("countInstance2~!~!~!~!~!~!~!~!"+$rootScope.countInstance2)
 
 
                                             if ($rootScope.countInstance2 >= $rootScope.countInstance5){
                                                 sessionStorage.setItem("KSProblem",two.toString());
                                                 $rootScope.countInstance2 = $rootScope.countInstance2 -1;
                                                 console.log("countInstance2 ="+$rootScope.countInstance2)
-                                                console.log("countInstance2 ="+$rootScope.countInstance5)
+                                                console.log("countInstance5 ="+$rootScope.countInstance5)
                                                 $http({
 
                                                     method: 'POST',
@@ -241,6 +246,7 @@ angular.module("sudokuApp")
                                         }
 
                                         if($rootScope.gameInstance=='3'){
+                                            sessionStorage.setItem("startWithKS","true");
                                             $http ({
                                                 method: 'GET',
                                                 url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'
@@ -275,12 +281,12 @@ angular.module("sudokuApp")
                                             //0-weight presentation, 1-value presentation, 2-mix presentation
                                             $rootScope.KSpresentation = Math.floor(Math.random() * 3);
                                             console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance5)
-                                            console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance2)
+                                            console.log("countInstance2~!~!~!~!~!~!~!~!"+$rootScope.countInstance2)
                                             if ($rootScope.countInstance2 >= $rootScope.countInstance5){
-                                                sessionStorage.setItem("KSProblem",two.toString());
+                                                sessionStorage.setItem("KSProblem",five.toString());
                                                 $rootScope.countInstance2 = $rootScope.countInstance2 - 1;
                                                 console.log("countInstance2 ="+$rootScope.countInstance2)
-                                                console.log("countInstance2 ="+$rootScope.countInstance5)
+                                                console.log("countInstance5 ="+$rootScope.countInstance5)
                                                 $http({
 
                                                     method: 'POST',
@@ -301,7 +307,7 @@ angular.module("sudokuApp")
 
                                             }
                                             else{
-                                                sessionStorage.setItem("KSProblem",five.toString());
+                                                sessionStorage.setItem("KSProblem",two.toString());
                                                 $rootScope.countInstance5 = $rootScope.countInstance5 - 1;
                                                 $http({
 

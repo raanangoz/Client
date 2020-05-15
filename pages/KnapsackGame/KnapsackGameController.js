@@ -192,8 +192,9 @@ angular.module("sudokuApp")
 
         //init board and game
         $scope.init = function(){
-            // $rootScope.instance = sessionStorage.getItem("KSProblem");
-            // console.log("its " +  $rootScope.instance);
+            console.log("old:" +$rootScope.instance);
+            $rootScope.instance = sessionStorage.getItem("KSProblem");
+            console.log("its " +  $rootScope.instance);
 
             sessionStorage.setItem("KSTIMEUP","n");
             second = sessionStorage.getItem("second") || 1;

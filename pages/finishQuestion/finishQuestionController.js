@@ -148,7 +148,7 @@ angular.module("sudokuApp")
             }
             else {//knapsack
                 peoplecorrect = responders.value;
-                console.log("peoplecorrect"+ peoplecorrect);
+                // console.log("peoplecorrect"+ peoplecorrect);
                 confident = confident1.value;
                 difficultyRank=rankDifficulty1.value;
                 people = peopleDifficulty.value;
@@ -168,7 +168,7 @@ angular.module("sudokuApp")
                 if (confident <= 10 && confident >= 1 && difficultyRank <= 10 && difficultyRank >= 1 &&
                     people>=1 && people <=10 && ((fat>=1 && fat <= 9)||$scope.timeUp == false)  && peoplecorrect >=1) {
                     if (sumTo100 == 100) {
-                        document.getElementById("nextTaskKS").disabled = false;
+                        document.getElementById("nextTaskKS").disabled = false; //TODO
 
 
                         $http({

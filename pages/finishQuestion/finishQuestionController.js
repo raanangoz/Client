@@ -7,14 +7,45 @@ angular.module("sudokuApp")
             return 'why would you do that???';
         }
 
+        const two = 2;
+        const five = 5;
+        $rootScope.countInstance5 = -1;
+        $rootScope.countInstance2 = -1;
+        $http ({
+            method: 'GET',
+            url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'
+        })
+            .then(function(response) {
+                    $rootScope.countInstance2 = response.data[0].regularPresCounter;
+                    //var countInstance5 = response.data[1][0];
+                    console.log("countInstance2~!~!!~!~!~!~!~~"+countInstance2)
+                    //console.log("countInstance5~!~!~!~!~!~!~!~!"+countInstance5)
 
+                },
+                function(response) {
+                    // $scope.records = response.statusText;
+                });
 
+        $http ({
+            method: 'GET',
+            url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters5/'
+        })
+            .then(function(response) {
+                    //var countInstance2 = response.data;
+                    $rootScope.countInstance5 = response.data[0].regularPresCounter;
+                    console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance5)
+
+                },
+                function(response) {
+                    // $scope.records = response.statusText;
+                });
         $(document).ready(function() {
             function disablePrev() { window.history.forward() }
             window.onload = disablePrev();
             window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
         });
-
+        var countInstance2 = -1;
+        var countInstance5 = -1;
         $scope.correctnessPercents = [];
 
         $rootScope.gameInstancesChosen=(JSON.parse(sessionStorage.getItem("gameInstancesChosen")));
@@ -241,15 +272,163 @@ angular.module("sudokuApp")
                     }
 
 
-                    //everyone presentation
+
+                    if($rootScope.gameInstance=='2'){
+                        $http ({
+                            method: 'GET',
+                            url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'
+                        })
+                            .then(function(response) {
+                                    $rootScope.countInstance2 = response.data[0].regularPresCounter;
+                                    console.log("countInstance2~!~!!~!~!~!~!~~"+$rootScope.countInstance2)
+
+                                },
+                                function(response) {
+                                    // $scope.records = response.statusText;
+                                });
+
+                        $http ({
+                            method: 'GET',
+                            url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters5/'
+                        })
+                            .then(function(response) {
+                                    //var countInstance2 = response.data;
+                                    $rootScope.countInstance5 = response.data[0].regularPresCounter;
+                                    console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance5)
+
+                                },
+                                function(response) {
+                                    // $scope.records = response.statusText;
+                                });
+
+                        if ($rootScope.countInstance2 >= $rootScope.countInstance5){
+                            sessionStorage.setItem("KSProblem",two.toString);
+                            console.log("countInstance2 ="+$rootScope.countInstance2)
+                            console.log("countInstance2 ="+$rootScope.countInstance5)
+                            $rootScope.countInstance2 = $rootScope.countInstance2 -1;
+                            $http({
+
+                                method: 'POST',
+                                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/updateInstancePresentation1/',
+                                data: {
+                                    "counter": "" +$rootScope.countInstance2,
+                                    "puzzleID" :"" + two.toString()
+
+                                }
+                            })
+                                .then(function (response) {
+
+                                    //add to the board 2d array
+
+                                }, function (response) {
+                                    // $scope.records = response.statusText;
+                                });
+
+                        }
+                        else{
+                            $rootScope.countInstance5 = $rootScope.countInstance5 -1;
+                            sessionStorage.setItem("KSProblem",five.toString());
+                            $http({
+
+                                method: 'POST',
+                                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/updateInstancePresentation1/',
+                                data: {
+                                    "counter": "" +$rootScope.countInstance5,
+                                    "puzzleID" :"" +five.toString()
+
+                                }
+                            })
+                                .then(function (response) {
+
+                                    //add to the board 2d array
+
+                                }, function (response) {
+                                    // $scope.records = response.statusText;
+                                });
+                        }
+
+                    }
+//everyone presentation
                     $rootScope.KSpresentation = 3;
 
                     if($rootScope.gameInstance=='3'){
+                        $http ({
+                            method: 'GET',
+                            url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'
+                        })
+                            .then(function(response) {
+                                    $rootScope.countInstance2 = response.data[0].regularPresCounter;
+                                    console.log("countInstance2~!~!!~!~!~!~!~~"+$rootScope.countInstance2)
+
+                                },
+                                function(response) {
+                                    // $scope.records = response.statusText;
+                                });
+
+                        $http ({
+                            method: 'GET',
+                            url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters5/'
+                        })
+                            .then(function(response) {
+                                    $rootScope.countInstance5 = response.data[0].regularPresCounter;
+                                    console.log("countInstance5~!~!~!~!~!~!~!~!"+$rootScope.countInstance5)
+
+                                },
+                                function(response) {
+                                    // $scope.records = response.statusText;
+                                });
+
 
                         ////console.log("here333333");
 
                         //0-weight presentation, 1-value presentation, 2-mix presentation
                         $rootScope.KSpresentation = Math.floor(Math.random() * 3);
+
+                        if ($rootScope.countInstance2 >= $rootScope.countInstance5){
+                            $rootScope.countInstance2 = $rootScope.countInstance2 -1;
+                            sessionStorage.setItem("KSProblem",two.toString());
+                            console.log("countInstance2 ="+$rootScope.countInstance2)
+                            console.log("countInstance2 ="+$rootScope.countInstance5)
+                            $http({
+
+                                method: 'POST',
+                                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/updateInstancePresentation1/',
+                                data: {
+                                    "counter": "" +$rootScope.countInstance2,
+                                    "puzzleID" : "" +two.toString()
+
+                                }
+                            })
+                                .then(function (response) {
+
+                                    //add to the board 2d array
+
+                                }, function (response) {
+                                    // $scope.records = response.statusText;
+                                });
+
+                        }
+                        else{
+                            sessionStorage.setItem("KSProblem",five.toString());
+                            $rootScope.countInstance5 = $rootScope.countInstance5 -1;
+                            $http({
+
+                                method: 'POST',
+                                url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/updateInstancePresentation1/',
+                                data: {
+                                    "counter": "" +$rootScope.countInstance5,
+                                    "puzzleID" : "" +five.toString()
+
+                                }
+                            })
+                                .then(function (response) {
+
+                                    //add to the board 2d array
+
+                                }, function (response) {
+                                    // $scope.records = response.statusText;
+                                });
+                        }
 
                         var counterPresentation= 0;
                         updateCounter(0);

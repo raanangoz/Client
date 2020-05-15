@@ -117,6 +117,9 @@
 /*    overflow: auto;*/
 /*}*/
 
+.spaceshaltura{
+    margin-left: 32px;
+}
 .sudokuQuestions{
 
     width: 700px;

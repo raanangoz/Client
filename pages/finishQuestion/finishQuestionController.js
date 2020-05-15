@@ -1,4 +1,3 @@
-
 angular.module("sudokuApp")
     .controller("finishQuestionController", function ($scope, $http, $location,$rootScope, $window) {
 
@@ -24,6 +23,8 @@ angular.module("sudokuApp")
         $rootScope.boxes = JSON.parse(sessionStorage.getItem("boxes"));
         $rootScope.GameID = JSON.parse(sessionStorage.getItem("GameID"));
         var optSolution;
+        var peoplecorrect;
+        var showHeavyItemQuestion;
         var correctnessRank;
         var difficultyRank;
         var confident;
@@ -34,6 +35,8 @@ angular.module("sudokuApp")
         var op2;
         var op3;
         var op4;
+        var op5;
+        var op6;
         var sumTo100;
         var puzzle = sessionStorage.getItem("plaster");
         $scope.arrayOfOptionNumbers = [];
@@ -71,6 +74,10 @@ angular.module("sudokuApp")
                 ////console.log("arrrrray= " + $scope.arrayOfOptionNumbers);
             }
             else {//knapsack
+                showHeavyItemQuestion = false;
+                if (sessionStorage.getItem("KSTIMEUP")=="y")
+                    showHeavyItemQuestion=true;
+                $scope.timeUp = showHeavyItemQuestion;
                 for (let i = 1; i <= 100; i++) {
                     $scope.correctnessPercents[i] = i;
                 }
@@ -140,13 +147,26 @@ angular.module("sudokuApp")
                 }
             }
             else {//knapsack
+                peoplecorrect = responders.value;
+                console.log("peoplecorrect"+ peoplecorrect);
                 confident = confident1.value;
                 difficultyRank=rankDifficulty1.value;
                 people = peopleDifficulty.value;
-                fat = fatItem.value;
+                // fat = $scope.heavyItem;
+                // console.log(fat+"fat");
+
+                if($scope.timeUp != true)
+                    fat = "FINISH";
+
+                else {
+                    fat = fatItem.value;
+                    console.log(fat+"fat");
+                }
+                // fat=document.getElementById("heavyItem")[0];
+                // console.log("fat"+fat);
 
                 if (confident <= 10 && confident >= 1 && difficultyRank <= 10 && difficultyRank >= 1 &&
-                    people>=1 && people <=10 && fat>=1 ) {
+                    people>=1 && people <=10 && ((fat>=1 && fat <= 9)||$scope.timeUp == false)  && peoplecorrect >=1) {
                     if (sumTo100 == 100) {
                         document.getElementById("nextTaskKS").disabled = false;
 
@@ -162,10 +182,13 @@ angular.module("sudokuApp")
                                 "difficultyRank": "" + difficultyRank,
                                 "estimatePeopleDif":""+people,
                                 "heaviestItem": "" + fat,
+                                "peoplecorrect": "" + peoplecorrect,
                                 "op1": "" + op1,
                                 "op2": "" + op2,
                                 "op3": "" + op3,
-                                "op4": "" + op4
+                                "op4": "" + op4,
+                                "op5": "" + op5,
+                                "op6": "" + op6
 
                                 // "estimateOthersCorrect": ""+correctnessPercents
                             }
@@ -185,7 +208,7 @@ angular.module("sudokuApp")
                         sessionStorage.setItem("KSProblem",newProb);
                     }
                     else{
-                        $window.alert("Please answer the last question correctly.");
+                        $window.alert("Invalid answer found. \nYour answers sum up to " +$scope.totalV +" instead of 100");
                     }
                 }
                 else{
@@ -395,7 +418,30 @@ angular.module("sudokuApp")
             op2 = document.getElementById("op2").value;
             op3 = document.getElementById("op3").value;
             op4 = document.getElementById("op4").value;
-            $scope.totalV = Number(op1)+Number(op2)+Number(op3)+Number(op4);
+            op5 = document.getElementById("op5").value;
+            op6 = document.getElementById("op6").value;
+            // op5 = document.getElementById("op5").value;
+            // op6 = document.getElementById("op6").value;
+            let plastersUndefined = [];
+            // plastersUndefined.push(Number(op1));
+            // plastersUndefined.push(Number(op2));
+            // plastersUndefined.push(Number(op3));
+            // plastersUndefined.push(Number(op4));
+            // plastersUndefined.push(Number(op5));
+            // plastersUndefined.push(Number(op6));
+            // plastersUndefined.push(op1);
+            // plastersUndefined.push(op2);
+            // plastersUndefined.push(op3);
+            // plastersUndefined.push(op4);
+            // plastersUndefined.push(op5);
+            // for(let i = 0; i < plastersUndefined.length;i++) {
+            //     console.log(plastersUndefined[i]);
+            //     if (plastersUndefined[i] == undefined)
+            //         plastersUndefined[i] = Number(0);
+            // }
+
+            console.log(op1);
+            $scope.totalV = Number(op1)+Number(op2)+Number(op3)+Number(op4)+Number(op5)+Number(op6);
             sumTo100 =  $scope.totalV;
             ////console.log(sumTo100);
         }
@@ -646,12 +692,12 @@ angular.module("sudokuApp")
             myObj = {
                 //"cursor": "pointer",
                 // "width": "15%",
-            //     "display": "flex",
-            // "flex-direction": "column",
-            // "flex-wrap": "nowrap"
-            //     "position": "absolute",
-            //     "top": $scope.top[$scope.countTopPres]+"%",
-            //     "left": $scope.left[$scope.countLeftPres]+"%"
+                //     "display": "flex",
+                // "flex-direction": "column",
+                // "flex-wrap": "nowrap"
+                //     "position": "absolute",
+                //     "top": $scope.top[$scope.countTopPres]+"%",
+                //     "left": $scope.left[$scope.countLeftPres]+"%"
                 // "top": "10%",
                 // "left": "10%"
 
@@ -668,6 +714,7 @@ angular.module("sudokuApp")
                 $scope.heavy2 = 435;//correct
                 $scope.heavy3 = 700;
                 $scope.heavy4 = 530;
+                $scope.heavy5 = 220;
             }
             if(puzzle == 3){
                 $scope.heavy1 = 26;
@@ -685,7 +732,8 @@ angular.module("sudokuApp")
                 $scope.heavy1 = 55;
                 $scope.heavy2 = 41;
                 $scope.heavy3 = 50;
-                $scope.heavy4 = 55;
+                $scope.heavy4 = 34;
+                $scope.heavy5 = 33;
             }
 
 

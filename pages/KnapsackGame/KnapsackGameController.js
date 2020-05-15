@@ -164,6 +164,7 @@ angular.module("sudokuApp")
                     $interval.cancel(interval);
                     document.getElementById("statusKS").innerHTML = "Game Over";
                     $window.alert("Game Over");
+                    sessionStorage.setItem("KSTIMEUP","y");
                     $scope.finishGame();
                     $location.url('/finishQuestion');
                 }
@@ -192,6 +193,7 @@ angular.module("sudokuApp")
         //init board and game
         $scope.init = function(){
 
+            sessionStorage.setItem("KSTIMEUP","n");
             second = sessionStorage.getItem("second") || 1;
             minute = sessionStorage.getItem("minute") || 4; //TODO CHANGE TO 4
 

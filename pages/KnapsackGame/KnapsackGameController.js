@@ -141,6 +141,7 @@ angular.module("sudokuApp")
         //stop after 4 minutes
         $scope.timer = function (){
 
+            $scope.beginDate = new Date();
             $scope.gameStarted = true;
 
             second = sessionStorage.getItem("second") || 1;
@@ -201,7 +202,7 @@ angular.module("sudokuApp")
             minute = sessionStorage.getItem("minute") || 4; //TODO CHANGE TO 4
 
             ////console.log("inittttttttttttt");
-            $scope.beginDate = new Date()
+            //$scope.beginDate = new Date()
 
 
             /**
@@ -373,13 +374,17 @@ angular.module("sudokuApp")
             ////console.log(solValue+"!@!");
             ////console.log(solWeight+"~!~");
             diff = diff *0.001;
+            var timeInMinutes = Math.floor((diff/60));
+            var timeInSeconds = Math.floor((diff%60));
+
+            var totalTime = timeInMinutes.toString() + ":" + timeInSeconds.toString()
 
             $http({
 
                 method: 'POST',
                 url: 'https://serverdecisionsmaking.herokuapp.com/Knapsack/finishGame',
                 data: {
-                    "totalTime": "" + diff,
+                    "totalTime": "" + totalTime,
                     "Solution": "" + userAns,
                     "GameID": "" + sessionStorage.getItem("GameID"),
                     "PuzzleID": "" + PuzzleID,

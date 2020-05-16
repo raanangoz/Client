@@ -11,6 +11,7 @@ angular.module("sudokuApp")
         const five = 5;
         $rootScope.countInstance5 = -1;
         $rootScope.countInstance2 = -1;
+
         $http ({
             method: 'GET',
             url:'https://serverdecisionsmaking.herokuapp.com/Knapsack/getInstancesCounters2/'

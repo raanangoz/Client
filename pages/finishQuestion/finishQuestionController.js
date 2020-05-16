@@ -304,7 +304,7 @@ angular.module("sudokuApp")
                                 });
 
                         if ($rootScope.countInstance2 >= $rootScope.countInstance5){
-                            sessionStorage.setItem("KSProblem",two.toString);
+                            sessionStorage.setItem("KSProblem",two.toString());
                             console.log("countInstance2 ="+$rootScope.countInstance2)
                             console.log("countInstance5 ="+$rootScope.countInstance5)
                             $rootScope.countInstance2 = $rootScope.countInstance2 -1;

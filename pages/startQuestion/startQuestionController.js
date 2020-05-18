@@ -115,7 +115,7 @@ angular.module("sudokuApp")
                 userEducation = $scope.education;
                 ////console.log("education= " + userEducation);
 
-
+                
                 if (userWorkerID == "" || userWorkerID == undefined || !(userWorkerID.match(lettersAndNumbers))) {
                     $window.alert('Please enter a valid Worker ID');
                 } else {
